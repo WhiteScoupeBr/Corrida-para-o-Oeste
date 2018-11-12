@@ -19,27 +19,18 @@ Jogador::~Jogador()
 void Jogador::OnColisao(Vector2f direction){
 
     if(direction.x<0.f){
-        colisaoE=true;
-        vel.x=0.f;//colisao esquerda
-        printf("Colisao");
-        colisaoD=false;
+        vel.x=0.f;
     }
     else if(direction.x>0.f){
-        colisaoD = true;
+
         vel.x=0.f;//colisao direita
-        printf("ColisaoD\n");
-        colisaoE=false;
     }
     else if(direction.y<0.f){
         vel.y=0.f;
         canJump=true;
-        colisaoD=false;
-        colisaoE=false;
     }
     else if(direction.y>0.f){
         vel.y=0.f;
-        colisaoD=false;
-        colisaoE=false;
     }
 
 
@@ -56,16 +47,15 @@ void Jogador::OnColisao(Vector2f direction){
         vel.y=-sqrtf(2.f*981.f*jumpHeight);
     }
 
-    vel.y+=981.f*deltaTime;
+        vel.y+=981.f*deltaTime;
 
     if(Keyboard::isKeyPressed(Keyboard::A))
     {
-        if(colisaoD==false)
          vel.x -= velocidade;
     }
+
     if(Keyboard::isKeyPressed(Keyboard::D))
     {
-        if(colisaoE==false)
         vel.x += velocidade;
     }
 
@@ -83,9 +73,7 @@ void Jogador::OnColisao(Vector2f direction){
             direita = true;
         else
             direita=false;
-
         }
-
     }
     anima.Atualiza(fileira,deltaTime,direita);
     corpo.setTextureRect(anima.uvRect);

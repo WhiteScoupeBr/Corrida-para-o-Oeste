@@ -12,7 +12,8 @@ Collider::~Collider()
     //dtor
 }
 
-void Collider::Movimento (float dx,float dy){
+void Collider::Movimento(float dx,float dy){
+    corpo.move(dx,dy);
 
  }
 bool Collider::CheckColisao(Collider outro,Vector2f& direction, float push){
@@ -41,7 +42,7 @@ bool Collider::CheckColisao(Collider outro,Vector2f& direction, float push){
             }
             else{
                 Movimento(-intersecX*(1.0f-push),0.0f);
-                outro.Movimento(intersecX*push,-1.0f);
+                outro.Movimento(intersecX*push,0.0f);
                 direction.x=-1.f;
                 direction.y=0.f;
             }

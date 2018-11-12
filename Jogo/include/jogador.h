@@ -29,7 +29,6 @@ class Jogador:public Personagem
         bool direita;
         Vector2f vel;
         bool canJump;
-        bool colisaoD,colisaoE;
         float jumpHeight;
 };
 

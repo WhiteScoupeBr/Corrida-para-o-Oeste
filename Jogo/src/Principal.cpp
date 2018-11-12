@@ -16,7 +16,7 @@ void Principal::Executar(){
     RenderWindow window(sf::VideoMode(800, 600), "Corrida para o Oeste",Style::Close|Style::Titlebar);
     Texture testeTexture,background,chao;
     View view(Vector2f(0.0f,0.0f), Vector2f(800.f,600.f));
-    testeTexture.loadFromFile("sprite1.png");
+    testeTexture.loadFromFile("sprite2.png");
     background.loadFromFile("fundogrande.jpg");
     chao.loadFromFile("chao.png");
     Vector2u textureSize=testeTexture.getSize();
@@ -38,7 +38,7 @@ void Principal::Executar(){
     vPlataforma.push_back(Plataforma(&chao,Vector2f(5600.f,450.f),Vector2f(2550.f,200.f)));
     invPlataforma.push_back(Plataforma(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));
     vPlataforma.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(500.f,-50.f)));
-     vPlataforma.push_back(Plataforma(&chao,Vector2f(200.f,50.f),Vector2f(950.f,-100.f)));
+    vPlataforma.push_back(Plataforma(&chao,Vector2f(200.f,50.f),Vector2f(950.f,-100.f)));
 
 
 

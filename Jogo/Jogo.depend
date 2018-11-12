@@ -419,19 +419,19 @@
 1541454638 c:\users\jpcos\onedrive\documentos\jogo\include\animacao.h
 	<SFML/Graphics.hpp>
 
-1541979040 c:\users\jpcos\onedrive\documentos\jogo\include\jogador.h
+1542059671 c:\users\jpcos\onedrive\documentos\jogo\include\jogador.h
 	"Animacao.h"
 	"Collider.h"
 	"Personagem.h"
 	<SFML/Graphics.hpp>
 
-1541960107 source:c:\users\jpcos\onedrive\documentos\jogo\src\collider.cpp
+1542060044 source:c:\users\jpcos\onedrive\documentos\jogo\src\collider.cpp
 	"Collider.h"
 
-1541685945 c:\users\jpcos\onedrive\documentos\jogo\include\collider.h
+1542059568 c:\users\jpcos\onedrive\documentos\jogo\include\collider.h
 	<SFML/Graphics.hpp>
 
-1541979160 source:c:\users\jpcos\onedrive\documentos\jogo\src\jogador.cpp
+1542059957 source:c:\users\jpcos\onedrive\documentos\jogo\src\jogador.cpp
 	"Jogador.h"
 
 1541461928 source:c:\users\jpcos\onedrive\documentos\jogo\src\plataforma.cpp
@@ -468,7 +468,7 @@
 	"Entidade.h"
 	<vector>
 
-1541979558 source:c:\users\jpcos\onedrive\documentos\jogo\src\principal.cpp
+1542057735 source:c:\users\jpcos\onedrive\documentos\jogo\src\principal.cpp
 	"Principal.h"
 
 1541628271 source:c:\users\jpcos\onedrive\documentos\jogo\src\gerenciaentidade.cpp
