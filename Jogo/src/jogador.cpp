@@ -10,6 +10,7 @@ Jogador::Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velo
     corpo.setSize(Vector2f(56.0f,96.0f));
     corpo.setOrigin(corpo.getSize()/2.f);
     corpo.setTexture(texture);
+    vida=2;
 }
 
 Jogador::~Jogador()
@@ -32,8 +33,6 @@ void Jogador::OnColisao(Vector2f direction){
     else if(direction.y>0.f){
         vel.y=0.f;
     }
-
-
 }
 
  void Jogador::Atualiza(float deltaTime)
@@ -59,22 +58,23 @@ void Jogador::OnColisao(Vector2f direction){
         vel.x += velocidade;
     }
 
-
     if(vel.x==0.0f){
         fileira=0;
+        if(canJump==false)
+            fileira=2;
     }
     else
     {
-        if(canJump==false)
-            fileira=2;
-        else{
-            fileira=1;
-        if(vel.x>0.0f)
-            direita = true;
+        if(vel.x>0.f)
+            direita=true;
         else
             direita=false;
-        }
+        if(canJump==false)
+            fileira=2;
+        else
+            fileira=1;
     }
+
     anima.Atualiza(fileira,deltaTime,direita);
     corpo.setTextureRect(anima.uvRect);
     corpo.move(vel*deltaTime);
@@ -84,11 +84,18 @@ void Jogador::OnColisao(Vector2f direction){
     return corpo.getPosition();
  }
 
-void Jogador::Desenha(RenderWindow& janela)
-{
+void Jogador::Desenha(RenderWindow& janela){
     janela.draw(corpo);
 }
 
 Collider Jogador::GetCollider(){
     return Collider(corpo);
+}
+
+int Jogador::getVida(){
+    return vida;
+}
+
+void Jogador::setVida(int x){
+    vida=x;
 }

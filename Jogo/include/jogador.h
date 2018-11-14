@@ -19,6 +19,8 @@ class Jogador:public Personagem
         Collider GetCollider();
         void OnColisao(Vector2f direction);
         void setPosition();
+        int getVida();
+        void setVida(int x);
     protected:
 
     private:
@@ -30,6 +32,7 @@ class Jogador:public Personagem
         Vector2f vel;
         bool canJump;
         float jumpHeight;
+        int vida;
 };
 
 #endif // JOGADOR_H

@@ -14,7 +14,6 @@ Collider::~Collider()
 
 void Collider::Movimento(float dx,float dy){
     corpo.move(dx,dy);
-
  }
 bool Collider::CheckColisao(Collider outro,Vector2f& direction, float push){
 

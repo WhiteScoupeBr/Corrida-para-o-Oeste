@@ -419,19 +419,19 @@
 1541454638 c:\users\jpcos\onedrive\documentos\jogo\include\animacao.h
 	<SFML/Graphics.hpp>
 
-1542059671 c:\users\jpcos\onedrive\documentos\jogo\include\jogador.h
+1542200085 c:\users\jpcos\onedrive\documentos\jogo\include\jogador.h
 	"Animacao.h"
 	"Collider.h"
 	"Personagem.h"
 	<SFML/Graphics.hpp>
 
-1542060044 source:c:\users\jpcos\onedrive\documentos\jogo\src\collider.cpp
+1542069865 source:c:\users\jpcos\onedrive\documentos\jogo\src\collider.cpp
 	"Collider.h"
 
 1542059568 c:\users\jpcos\onedrive\documentos\jogo\include\collider.h
 	<SFML/Graphics.hpp>
 
-1542059957 source:c:\users\jpcos\onedrive\documentos\jogo\src\jogador.cpp
+1542199867 source:c:\users\jpcos\onedrive\documentos\jogo\src\jogador.cpp
 	"Jogador.h"
 
 1541461928 source:c:\users\jpcos\onedrive\documentos\jogo\src\plataforma.cpp
@@ -444,7 +444,7 @@
 1541887239 c:\users\jpcos\onedrive\documentos\jogo\include\entidade.h
 	<SFML/Graphics.hpp>
 
-1541886456 source:c:\users\jpcos\onedrive\documentos\jogo\src\entidade.cpp
+1542061923 source:c:\users\jpcos\onedrive\documentos\jogo\src\entidade.cpp
 	"Entidade.h"
 
 1541887261 c:\users\jpcos\onedrive\documentos\jogo\include\personagem.h
@@ -458,7 +458,7 @@
 1541605698 source:c:\users\jpcos\onedrive\documentos\jogo\src\personagem.cpp
 	"Personagem.h"
 
-1541685555 c:\users\jpcos\onedrive\documentos\jogo\include\principal.h
+1542200323 c:\users\jpcos\onedrive\documentos\jogo\include\principal.h
 	<SFML/Graphics.hpp>
 	"Animacao.h"
 	"Collider.h"
@@ -466,9 +466,11 @@
 	"Plataforma.h"
 	"ListaEnt.h"
 	"Entidade.h"
+	"Cacto.h"
+	<string>
 	<vector>
 
-1542057735 source:c:\users\jpcos\onedrive\documentos\jogo\src\principal.cpp
+1542070093 source:c:\users\jpcos\onedrive\documentos\jogo\src\principal.cpp
 	"Principal.h"
 
 1541628271 source:c:\users\jpcos\onedrive\documentos\jogo\src\gerenciaentidade.cpp
@@ -490,15 +492,16 @@
 	"Animacao.h"
 	"Inimigo.h"
 
-1541959083 source:c:\users\jpcos\onedrive\documentos\jogo\src\obstaculo.cpp
+1542065496 source:c:\users\jpcos\onedrive\documentos\jogo\src\obstaculo.cpp
 	"Obstaculo.h"
 
-1541959123 c:\users\jpcos\onedrive\documentos\jogo\include\obstaculo.h
+1542067488 c:\users\jpcos\onedrive\documentos\jogo\include\obstaculo.h
 	"Entidade.h"
+	"Collider.h"
 
-1541959104 source:c:\users\jpcos\onedrive\documentos\jogo\src\cacto.cpp
+1542064489 source:c:\users\jpcos\onedrive\documentos\jogo\src\cacto.cpp
 	"Cacto.h"
 
-1541959148 c:\users\jpcos\onedrive\documentos\jogo\include\cacto.h
+1542064572 c:\users\jpcos\onedrive\documentos\jogo\include\cacto.h
 	"Obstaculo.h"
 

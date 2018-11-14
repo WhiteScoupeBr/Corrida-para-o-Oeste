@@ -1,12 +1,15 @@
 #ifndef OBSTACULO_H
 #define OBSTACULO_H
 #include "Entidade.h"
+#include "Collider.h"
 
 class Obstaculo:public Entidade
 {
     public:
         Obstaculo();
-        virtual ~Obstaculo();
+        ~Obstaculo();
+        virtual void Desenha(RenderWindow& janela)=0;
+        virtual Collider GetCollider() =0;
 
     protected:
 

@@ -16,7 +16,7 @@ void Entidade::setVelocidade(Vector2f vel)
 }
 void Entidade::setVelocidade(float vx, float vy)
 {
-entVel.x = vx;
+ entVel.x = vx;
  entVel.y = vy;
 }
 sf::Vector2f Entidade::getVelocidade() const

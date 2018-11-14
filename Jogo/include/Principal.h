@@ -7,9 +7,12 @@
 #include"Plataforma.h"
 #include"ListaEnt.h"
 #include"Entidade.h"
+#include "Cacto.h"
+#include<string>
 #include<vector>
 
 using namespace sf;
+
 
 class Principal
 {

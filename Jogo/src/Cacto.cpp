@@ -1,11 +1,22 @@
 #include "Cacto.h"
 
-Cacto::Cacto()
+Cacto::Cacto(Texture* texture, Vector2f size, Vector2f posicao)
 {
-    //ctor
+    corpo.setSize(size);
+    corpo.setOrigin(size/2.0f);
+    corpo.setTexture(texture);
+    corpo.setPosition(posicao);
 }
 
 Cacto::~Cacto()
 {
     //dtor
+}
+
+ void Cacto::Desenha(RenderWindow& janela){
+    janela.draw(corpo);
+}
+
+ Collider Cacto::GetCollider(){
+    return Collider (corpo);
 }
