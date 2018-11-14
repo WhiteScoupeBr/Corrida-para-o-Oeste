@@ -8,7 +8,9 @@
 #include"ListaEnt.h"
 #include"Entidade.h"
 #include "Cacto.h"
+#include "Tnt.h"
 #include<string>
+#include<sstream>
 #include<vector>
 
 using namespace sf;

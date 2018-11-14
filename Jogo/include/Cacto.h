@@ -2,6 +2,7 @@
 #define CACTO_H
 #include "Obstaculo.h"
 
+
 class Cacto:public Obstaculo
 {
     public:

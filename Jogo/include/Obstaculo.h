@@ -2,6 +2,7 @@
 #define OBSTACULO_H
 #include "Entidade.h"
 #include "Collider.h"
+#include "jogador.h"
 
 class Obstaculo:public Entidade
 {

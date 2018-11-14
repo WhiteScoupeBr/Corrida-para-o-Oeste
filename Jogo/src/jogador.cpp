@@ -99,3 +99,11 @@ int Jogador::getVida(){
 void Jogador::setVida(int x){
     vida=x;
 }
+
+void Jogador::Move(float dx,float dy){
+    corpo.move(dx,dy);
+}
+
+void Jogador::setPosition(float dx,float dy){
+    corpo.setPosition(dx,dy);
+}

@@ -18,9 +18,10 @@ class Jogador:public Personagem
         Vector2f GetPosition();
         Collider GetCollider();
         void OnColisao(Vector2f direction);
-        void setPosition();
+        void setPosition(float dx, float dy);
         int getVida();
         void setVida(int x);
+        void Move(float dx,float dy);
     protected:
 
     private:

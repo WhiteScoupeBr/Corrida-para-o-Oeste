@@ -53,6 +53,7 @@
 		</Linker>
 		<Unit filename="include/Animacao.h" />
 		<Unit filename="include/Apache.h" />
+		<Unit filename="include/BolaFeno.h" />
 		<Unit filename="include/Cacto.h" />
 		<Unit filename="include/Collider.h" />
 		<Unit filename="include/Entidade.h" />
@@ -62,10 +63,12 @@
 		<Unit filename="include/Personagem.h" />
 		<Unit filename="include/Plataforma.h" />
 		<Unit filename="include/Principal.h" />
+		<Unit filename="include/Tnt.h" />
 		<Unit filename="include/jogador.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Animacao.cpp" />
 		<Unit filename="src/Apache.cpp" />
+		<Unit filename="src/BolaFeno.cpp" />
 		<Unit filename="src/Cacto.cpp" />
 		<Unit filename="src/Collider.cpp" />
 		<Unit filename="src/Entidade.cpp" />
@@ -75,6 +78,7 @@
 		<Unit filename="src/Personagem.cpp" />
 		<Unit filename="src/Plataforma.cpp" />
 		<Unit filename="src/Principal.cpp" />
+		<Unit filename="src/Tnt.cpp" />
 		<Unit filename="src/jogador.cpp" />
 		<Extensions>
 			<code_completion />
