@@ -9,8 +9,7 @@ class Plataforma
 {
     public:
         Plataforma(Texture* texture, Vector2f size, Vector2f posicao);
-        virtual ~Plataforma();
-
+        ~Plataforma();
         void Desenha(RenderWindow& janela);
         Collider GetCollider();
 

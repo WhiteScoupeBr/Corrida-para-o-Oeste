@@ -7,9 +7,10 @@ class Cacto:public Obstaculo
 {
     public:
         Cacto(Texture* texture, Vector2f size, Vector2f posicao);
-        virtual ~Cacto();
+        ~Cacto();
          Collider GetCollider();
-         void Desenha(RenderWindow& janela);
+         void Desenha(RenderWindow& window);
+         void Atualiza(float deltaTime){}
 
     protected:
 

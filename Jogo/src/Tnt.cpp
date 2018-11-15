@@ -12,8 +12,8 @@ Tnt::~Tnt()
 {
     //dtor
 }
- void Tnt::Desenha(RenderWindow& janela){
-    janela.draw(corpo);
+ void Tnt::Desenha(RenderWindow& window){
+    window.draw(corpo);
 }
 
  Collider Tnt::GetCollider(){

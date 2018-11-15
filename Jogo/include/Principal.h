@@ -2,13 +2,14 @@
 #define PRINCIPAL_H
 #include <SFML/Graphics.hpp>
 #include "Animacao.h"
-#include "Collider.h"
-#include"jogador.h"
-#include"Plataforma.h"
-#include"ListaEnt.h"
+//#include "Collider.h"
+//#include"jogador.h"
+//#include"Plataforma.h"
 #include"Entidade.h"
-#include "Cacto.h"
-#include "Tnt.h"
+//#include "Cacto.h"
+//#include "Tnt.h"
+//#include "BolaFeno.h"
+#include "Fase1.h"
 #include<string>
 #include<sstream>
 #include<vector>
@@ -26,9 +27,6 @@ class Principal
     protected:
 
     private:
-        ListaEnt listaEnt;
-
-
 
 };
 

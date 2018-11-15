@@ -8,7 +8,8 @@ class Tnt:public Obstaculo
         Tnt(Texture* texture, Vector2f size, Vector2f posicao);
          ~Tnt();
         Collider GetCollider();
-        void Desenha(RenderWindow& janela);
+        void Desenha(RenderWindow& window);
+        void Atualiza(float deltaTime){};
 
     protected:
 

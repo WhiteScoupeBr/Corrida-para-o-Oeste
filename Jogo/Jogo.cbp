@@ -57,10 +57,10 @@
 		<Unit filename="include/Cacto.h" />
 		<Unit filename="include/Collider.h" />
 		<Unit filename="include/Entidade.h" />
+		<Unit filename="include/Fase1.h" />
 		<Unit filename="include/Inimigo.h" />
-		<Unit filename="include/ListaEnt.h" />
+		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Obstaculo.h" />
-		<Unit filename="include/Personagem.h" />
 		<Unit filename="include/Plataforma.h" />
 		<Unit filename="include/Principal.h" />
 		<Unit filename="include/Tnt.h" />
@@ -72,10 +72,10 @@
 		<Unit filename="src/Cacto.cpp" />
 		<Unit filename="src/Collider.cpp" />
 		<Unit filename="src/Entidade.cpp" />
+		<Unit filename="src/Fase1.cpp" />
 		<Unit filename="src/Inimigo.cpp" />
-		<Unit filename="src/ListaEnt.cpp" />
+		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Obstaculo.cpp" />
-		<Unit filename="src/Personagem.cpp" />
 		<Unit filename="src/Plataforma.cpp" />
 		<Unit filename="src/Principal.cpp" />
 		<Unit filename="src/Tnt.cpp" />

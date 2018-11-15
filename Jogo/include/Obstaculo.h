@@ -9,9 +9,9 @@ class Obstaculo:public Entidade
     public:
         Obstaculo();
         ~Obstaculo();
-        virtual void Desenha(RenderWindow& janela)=0;
-        virtual Collider GetCollider() =0;
-
+        virtual void Desenha(RenderWindow& window)=0;
+        virtual Collider GetCollider()=0;
+        virtual void Atualiza(float deltaTime)=0;
     protected:
 
     private:

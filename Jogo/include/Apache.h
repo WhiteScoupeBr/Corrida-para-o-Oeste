@@ -10,12 +10,12 @@ class Apache:public Inimigo
         Apache(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight);
         virtual ~Apache();
 
-        void Atualiza(float deltaTime);
-        void Desenha(RenderWindow& janela);
-        Vector2f GetPosition();
-        Collider GetCollider();
-        void OnColisao(Vector2f direction);
-        void setPosition();
+        //void Atualiza(float deltaTime);
+        //void Desenha(RenderWindow& janela);
+        //Vector2f GetPosition();
+        //Collider GetCollider();
+        //void OnColisao(Vector2f direction);
+        //void setPosition();
     protected:
 
     private:

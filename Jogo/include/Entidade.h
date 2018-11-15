@@ -1,6 +1,7 @@
 #ifndef ENTIDADE_H
 #define ENTIDADE_H
 #include <SFML/Graphics.hpp>
+#include "Collider.h"
 
 using namespace sf;
 
@@ -8,14 +9,14 @@ class Entidade
 {
     public:
         Entidade();
-        virtual ~Entidade();
-        void setVelocidade(Vector2f vel);
-        void setVelocidade(float vx,float vy);
-        Vector2f getVelocidade()const;
+        ~Entidade();
+        virtual void Atualiza(float deltaTime)=0;
+        virtual void Desenha(RenderWindow& janela)=0;
+        virtual Collider GetCollider ()=0;
 
     protected:
     private:
-        Vector2f entVel;
+
 };
 
 #endif // ENTIDADE_H

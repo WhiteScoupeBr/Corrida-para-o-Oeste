@@ -13,8 +13,8 @@ Cacto::~Cacto()
     //dtor
 }
 
- void Cacto::Desenha(RenderWindow& janela){
-    janela.draw(corpo);
+ void Cacto::Desenha(RenderWindow& window){
+    window.draw(corpo);
 }
 
  Collider Cacto::GetCollider(){
