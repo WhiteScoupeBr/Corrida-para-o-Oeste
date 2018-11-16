@@ -27,7 +27,7 @@ class Fase1
     protected:
 
     private:
-        Texture background,jj,chao,bola,cacto,tnt,bala1;
+        Texture background,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
         Font fonte;
         Text vidas;
 
