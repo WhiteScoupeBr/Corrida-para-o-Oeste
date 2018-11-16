@@ -11,6 +11,8 @@ Jogador::Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velo
     corpo.setOrigin(corpo.getSize()/2.f);
     corpo.setTexture(texture);
     vida=2;
+    atira=false;
+    counter=0;
 }
 
 Jogador::~Jogador()
@@ -40,6 +42,9 @@ void Jogador::OnColisao(Vector2f direction){
 
     vel.x=0.f;
 
+    atira=false;
+    counter+=1.f;
+
      if(Keyboard::isKeyPressed(Keyboard::W)&&canJump)
     {
         canJump=false;
@@ -58,6 +63,13 @@ void Jogador::OnColisao(Vector2f direction){
         vel.x += velocidade;
     }
 
+     if(Keyboard::isKeyPressed(Keyboard::Space))
+    {
+        if(counter>1000){
+            atira=true;
+            counter=0;
+        }
+    }
     if(vel.x==0.0f){
         fileira=0;
         if(canJump==false)
@@ -106,4 +118,10 @@ void Jogador::Move(float dx,float dy){
 
 void Jogador::setPosition(float dx,float dy){
     corpo.setPosition(dx,dy);
+}
+bool Jogador::GetAtira(){
+    return atira;
+}
+bool Jogador::GetDireita(){
+    return direita;
 }

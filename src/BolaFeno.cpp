@@ -10,6 +10,7 @@ BolaFeno::BolaFeno(Texture* texture, Vector2f size, Vector2f posicao)
 
 
 BolaFeno::~BolaFeno()
+
 {
     //dtor
 }
@@ -24,11 +25,19 @@ BolaFeno::~BolaFeno()
 
 void BolaFeno::Atualiza(float deltaTime){
     Vector2f vel;
-    int i;
-    if(i<200)
-        corpo.move(1.f,0.f);
-    else if(i<400)
-        corpo.move(1.f,0.f);
+
+    counter++;
+    float velocidade = 90.f;
+    if(counter<2000){
+        corpo.move(0.06f,0.f);
+        //vel.x+=velocidade;
+    }
+    if(counter>2000){
+        corpo.move(-.06f,0.f);
+    }
+
+    if(counter >4000)
+        counter=0;
 }
 
 

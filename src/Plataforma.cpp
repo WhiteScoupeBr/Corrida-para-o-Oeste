@@ -13,8 +13,8 @@ Plataforma::~Plataforma()
     //dtor
 }
 
-void Plataforma::Desenha(RenderWindow& janela){
-    janela.draw(corpo);
+void Plataforma::Desenha(RenderWindow& window){
+    window.draw(corpo);
 }
 
 Collider Plataforma::GetCollider(){

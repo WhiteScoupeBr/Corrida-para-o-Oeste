@@ -1,6 +1,6 @@
 #ifndef BOLAFENO_H
 #define BOLAFENO_H
-#include "Obstaculo.h"
+#include"Obstaculo.h"
 
 class BolaFeno:public Obstaculo
 {
@@ -15,6 +15,7 @@ class BolaFeno:public Obstaculo
 
     private:
         RectangleShape corpo;
+        int counter;
 };
 
 #endif // BOLAFENO_H

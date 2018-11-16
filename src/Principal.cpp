@@ -16,7 +16,7 @@ void Principal::Executar(){
 
     Texture testeTexture;
     testeTexture.loadFromFile("sprite2.png");
-    Jogador jogador1(&testeTexture,Vector2u(8,12),0.1f,200.0f, 128.f);
+    Jogador jogador1(&testeTexture,Vector2u(8,12),0.1f,200.0f,128.f);
 
     Vector2u textureSize = testeTexture.getSize();
     textureSize.x/=8;

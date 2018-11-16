@@ -10,6 +10,7 @@ using namespace sf;
 class Jogador
 {
     public:
+        Jogador(){};
         Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight);
         virtual ~Jogador();
         void Atualiza(float deltaTime);
@@ -21,6 +22,9 @@ class Jogador
         int getVida();
         void setVida(int x);
         void Move(float dx,float dy);
+        bool GetDireita();
+        bool GetAtira();
+
     protected:
 
     private:
@@ -28,11 +32,13 @@ class Jogador
         Animacao anima;
         unsigned int fileira;
         float velocidade;
-        bool direita;
         Vector2f vel;
         bool canJump;
         float jumpHeight;
         int vida;
+        bool direita;
+        bool atira;
+        float counter;
 };
 
 #endif // JOGADOR_H

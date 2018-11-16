@@ -6,7 +6,12 @@ class Inimigo:public Entidade
 {
     public:
         Inimigo();
-        virtual ~Inimigo();
+        ~Inimigo();
+        virtual void Desenha(RenderWindow& window)=0;
+        virtual Collider GetCollider()=0;
+        virtual void Atualiza(float deltaTime)=0;
+        virtual bool GetAtira()=0;
+        virtual Vector2f GetPosition()=0;
 
     protected:
 

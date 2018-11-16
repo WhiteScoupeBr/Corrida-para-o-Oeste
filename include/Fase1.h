@@ -7,7 +7,11 @@
 #include"Tnt.h"
 #include"BolaFeno.h"
 #include"jogador.h"
+#include "Projetil.h"
 #include"Plataforma.h"
+#include"Apache.h"
+#include "JJ.h"
+#include "ProjInimigo.h"
 #include<string>
 #include<sstream>
 #include<vector>
@@ -23,7 +27,7 @@ class Fase1
     protected:
 
     private:
-        Texture background,chao,cacto,tnt;
+        Texture background,jj,chao,bola,cacto,tnt,bala1;
         Font fonte;
         Text vidas;
 
@@ -31,8 +35,12 @@ class Fase1
 
         std::vector<Plataforma> plataformas;
         std::vector<Plataforma>invPlataforma;
+        std::vector<Plataforma>invChao;
         std::vector<Obstaculo*>obs;
-
+        std::vector<Projetil>bala;
+        std::vector<ProjInimigo>bala2;
+        std::vector<Inimigo*>inimigos;
+        //Plataforma invChao(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));
 };
 
 #endif // FASE1_H

@@ -1,14 +1,14 @@
-#ifndef APACHE_H
-#define APACHE_H
+#ifndef JJ_H
+#define JJ_H
 #include "Collider.h"
 #include "Animacao.h"
 #include "Inimigo.h"
 
-class Apache:public Inimigo
+class JJ:public Inimigo
 {
     public:
-        Apache(Texture* texture, Vector2f posicao, float trocaTempo);
-        virtual ~Apache();
+        JJ(Texture* texture,Vector2f posicao, float trocaTempo);
+        ~JJ();
 
         void Atualiza(float deltaTime);
         void Desenha(RenderWindow& window);
@@ -17,7 +17,6 @@ class Apache:public Inimigo
         //void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
         bool GetAtira();
-
     protected:
 
     private:
@@ -28,6 +27,6 @@ class Apache:public Inimigo
         Vector2f vel;
         bool canJump;
         int counter;
-
+        bool jjAtira;
 };
 #endif // APACHE_H
