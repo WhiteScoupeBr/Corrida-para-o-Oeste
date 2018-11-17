@@ -15,7 +15,8 @@
 #include<string>
 #include<sstream>
 #include<vector>
-
+#include "Jogador2.h"
+#include "Projetil2.h"
 
 class Fase1
 {
@@ -23,6 +24,7 @@ class Fase1
         Fase1();
         virtual ~Fase1();
         void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view);
+        void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2);
 
     protected:
 
@@ -30,6 +32,8 @@ class Fase1
         Texture background,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
         Font fonte;
         Text vidas;
+        Font fonte2;
+        Text vidas2;
 
         Vector2f direction;
 
@@ -38,6 +42,7 @@ class Fase1
         std::vector<Plataforma>invChao;
         std::vector<Obstaculo*>obs;
         std::vector<Projetil>bala;
+        std::vector<Projetil2>bala2Jog;
         std::vector<ProjInimigo>bala2;
         std::vector<Inimigo*>inimigos;
         //Plataforma invChao(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));

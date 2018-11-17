@@ -5,14 +5,16 @@
 //#include "Collider.h"
 //#include"jogador.h"
 //#include"Plataforma.h"
-#include"Entidade.h"
+#include "Entidade.h"
 //#include "Cacto.h"
 //#include "Tnt.h"
 //#include "BolaFeno.h"
 #include "Fase1.h"
-#include<string>
-#include<sstream>
-#include<vector>
+#include "Menu.h"
+#include "Menu2.h"
+#include <string>
+#include <sstream>
+#include <vector>
 
 using namespace sf;
 

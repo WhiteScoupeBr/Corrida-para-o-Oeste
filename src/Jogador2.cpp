@@ -1,6 +1,7 @@
-#include "Jogador.h"
+#include "Jogador2.h"
+#include <cmath>
 
-Jogador::Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight):
+Jogador2::Jogador2(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight):
     anima(texture,contImg,trocaTempo)
 {
     this->velocidade=velocidade;
@@ -15,11 +16,11 @@ Jogador::Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velo
     counter=0;
 }
 
-Jogador::~Jogador()
+Jogador2::~Jogador2()
 {
     //dtor
 }
-void Jogador::OnColisao(Vector2f direction){
+void Jogador2::OnColisao(Vector2f direction){
 
     if(direction.x<0.f){
         vel.x=0.f;
@@ -37,7 +38,7 @@ void Jogador::OnColisao(Vector2f direction){
     }
 }
 
- void Jogador::Atualiza(float deltaTime)
+ void Jogador2::Atualiza(float deltaTime)
  {
 
     vel.x=0.f;
@@ -45,7 +46,7 @@ void Jogador::OnColisao(Vector2f direction){
     atira=false;
     counter+=1.f;
 
-     if(Keyboard::isKeyPressed(Keyboard::W)&&canJump)
+     if(Keyboard::isKeyPressed(Keyboard::Up)&&canJump)
     {
         canJump=false;
         vel.y=-sqrtf(2.f*981.f*jumpHeight);
@@ -53,17 +54,17 @@ void Jogador::OnColisao(Vector2f direction){
 
         vel.y+=981.f*deltaTime;
 
-    if(Keyboard::isKeyPressed(Keyboard::A))
+    if(Keyboard::isKeyPressed(Keyboard::Left))
     {
          vel.x -= velocidade;
     }
 
-    if(Keyboard::isKeyPressed(Keyboard::D))
+    if(Keyboard::isKeyPressed(Keyboard::Right))
     {
         vel.x += velocidade;
     }
 
-     if(Keyboard::isKeyPressed(Keyboard::Space))
+     if(Keyboard::isKeyPressed(Keyboard::P))
     {
         if(counter>1000){
             atira=true;
@@ -92,36 +93,36 @@ void Jogador::OnColisao(Vector2f direction){
     corpo.move(vel*deltaTime);
  }
 
- Vector2f Jogador::GetPosition(){
+ Vector2f Jogador2::GetPosition(){
     return corpo.getPosition();
  }
 
-void Jogador::Desenha(RenderWindow& janela){
+void Jogador2::Desenha(RenderWindow& janela){
     janela.draw(corpo);
 }
 
-Collider Jogador::GetCollider(){
+Collider Jogador2::GetCollider(){
     return Collider(corpo);
 }
 
-int Jogador::getVida(){
+int Jogador2::getVida(){
     return vida;
 }
 
-void Jogador::setVida(int x){
+void Jogador2::setVida(int x){
     vida=x;
 }
 
-void Jogador::Move(float dx,float dy){
+void Jogador2::Move(float dx,float dy){
     corpo.move(dx,dy);
 }
 
-void Jogador::setPosition(float dx,float dy){
+void Jogador2::setPosition(float dx,float dy){
     corpo.setPosition(dx,dy);
 }
-bool Jogador::GetAtira(){
+bool Jogador2::GetAtira(){
     return atira;
 }
-bool Jogador::GetDireita(){
+bool Jogador2::GetDireita(){
     return direita;
 }
