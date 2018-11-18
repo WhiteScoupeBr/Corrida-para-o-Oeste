@@ -19,7 +19,7 @@ void Principal::Executar()
     Texture textureJogador1, textureJogador2;;
     textureJogador1.loadFromFile("sprite2.png");
     textureJogador2.loadFromFile("sprite22.png");
-    Jogador jogador1(&textureJogador1,Vector2u(8,12),0.1f,200.0f,128.f);
+    Jogador jogador1(&textureJogador1,Vector2u(8,12),0.1f,400.0f,128.f);
     Jogador2 jogador2(&textureJogador2,Vector2u(8,12),0.1f,200.0f,128.f);
 
     View view(Vector2f(0.0f,0.0f), Vector2f(800.f,600.f));
@@ -37,15 +37,15 @@ void Principal::Executar()
     music2.openFromFile("Good.wav");
     //music.play();
 
+
     Fase1 fase1;
 
     Menu menu1(window.getSize().x, window.getSize().y);
     //Menu2 menu2(window.getSize().x, window.getSize().y);
 
-    Pausa pause (800.f, 600.f);
+    Pause pause (window.getSize().x, window.getSize().y);
 
-    bool jogoPronto2 = false, jogoPronto1 = false,desenhaPause=false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false, fase2Pronta = false;
-    bool _pause=false;
+
 
 
 
@@ -152,7 +152,7 @@ void Principal::Executar()
 
 
 
-            }
+
 
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -163,13 +163,6 @@ void Principal::Executar()
             {
                 _pause=true;
                 Sleep(500);
-            }
-
-            if(_pause){
-                if(sf::Keyboard::isKeyPressed(Keyboard::P))
-                {
-                _pause=false;
-                }
             }
 
             if(_pause==true){
@@ -190,7 +183,6 @@ void Principal::Executar()
                         switch (pause.GetPressedItem())
                         {
                         case 0:
-                            printf("\n PAUSA button has been pressed \n");
                             _pause=false;
                             break;
                         case 1:
@@ -205,8 +197,8 @@ void Principal::Executar()
                     }
                 }
             }
-       // printf("%d\n",_pause);
 
+        }
 
         if (jogoPronto1==true && fase1Pronta)
         {
@@ -260,7 +252,7 @@ void Principal::Executar()
 
         if(_pause)
         {
-            pause.setPosition(jogador1.GetPosition().x+100, jogador1.GetPosition().y-300);
+            pause.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
             pause.Desenha(window);
         }
 

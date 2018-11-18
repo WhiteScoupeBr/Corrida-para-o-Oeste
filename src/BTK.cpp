@@ -1,6 +1,7 @@
-#include "Apache.h"
+#include "BTK.h"
 
-Apache::Apache(Texture* texture, Vector2f posicao,Vector2u contImg, float trocaTempo):
+
+BTK::BTK(Texture* texture, Vector2f posicao,Vector2u contImg, float trocaTempo):
 anima(texture,contImg,trocaTempo)
 {
     fileira=0;
@@ -8,40 +9,38 @@ anima(texture,contImg,trocaTempo)
     corpo.setOrigin(corpo.getSize()/2.f);
     corpo.setTexture(texture);
     corpo.setPosition(posicao);
+    btkAtira=false;
 };
-Apache::~Apache()
+BTK::~BTK()
 {
     //dtor
 }
 
-void Apache::Desenha(RenderWindow& window){
+void BTK::Desenha(RenderWindow& window){
     window.draw(corpo);
 }
 
- Vector2f Apache::GetPosition(){
+ Vector2f BTK::GetPosition(){
     return corpo.getPosition();
  }
 
-Collider Apache::GetCollider(){
+Collider BTK::GetCollider(){
     return Collider(corpo);
 }
 
-void Apache::setPosition(float dx,float dy){
+void BTK::setPosition(float dx,float dy){
     corpo.setPosition(dx, dy);
 }
 
-void Apache::Atualiza(float deltaTime){
+void BTK::Atualiza(float deltaTime){
 
      counter++;
-    float velocidade = 90.f;
     if(counter<4000){
-        corpo.move(0.06f,0.f);
-        //vel.x+=velocidade;
-        direita = true;
+       corpo.move(0.f,.1f);
     }
+
     if(counter>4000){
-        corpo.move(-.06f,0.f);
-        direita =false;
+        corpo.move(0.f,-0.1f);
     }
 
     if(counter >8000)
@@ -52,7 +51,12 @@ void Apache::Atualiza(float deltaTime){
 
 }
 
-bool Apache::GetAtira(){
-    return false;
-}
+bool BTK::GetAtira(){
 
+    counter++;
+     btkAtira=false;
+     if(counter>2000){
+        btkAtira=true;
+        counter=0;
+     }
+}

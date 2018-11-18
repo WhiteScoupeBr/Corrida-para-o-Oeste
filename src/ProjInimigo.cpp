@@ -25,3 +25,7 @@ void ProjInimigo::Desenha(RenderWindow& window){
 Collider ProjInimigo::GetCollider(){
     return Collider(bala);
 }
+
+Vector2f ProjInimigo::GetPosition(){
+    return bala.getPosition();
+}

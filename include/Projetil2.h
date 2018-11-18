@@ -12,6 +12,7 @@ class Projetil2
         void Atualiza();
         void Desenha(RenderWindow& window);
         Collider GetCollider();
+        Vector2f GetPosition();
     protected:
 
     private:

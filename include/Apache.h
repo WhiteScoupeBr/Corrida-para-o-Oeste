@@ -7,7 +7,7 @@
 class Apache:public Inimigo
 {
     public:
-        Apache(Texture* texture, Vector2f posicao, float trocaTempo);
+        Apache(Texture* texture, Vector2f posicao, Vector2u contImg,float trocaTempo);
         virtual ~Apache();
 
         void Atualiza(float deltaTime);
@@ -26,8 +26,8 @@ class Apache:public Inimigo
         unsigned int fileira;
         float velocidade;
         Vector2f vel;
-        bool canJump;
-        int counter;
+        bool direita;
+        int counter=0;
 
 };
 #endif // APACHE_H

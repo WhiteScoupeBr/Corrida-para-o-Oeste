@@ -11,9 +11,11 @@
 //#include "Tnt.h"
 //#include "BolaFeno.h"
 #include "Fase1.h"
+#include "Fase2.h"
 #include "Menu.h"
 #include "Menu2.h"
 #include "Pausa.h"
+#include "Pause.h"
 #include <string>
 #include <sstream>
 #include <vector>

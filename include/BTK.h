@@ -1,32 +1,32 @@
-#ifndef JJ_H
-#define JJ_H
+#ifndef BTK_H
+#define BTK_H
 #include "Collider.h"
 #include "Animacao.h"
 #include "Inimigo.h"
 
-class JJ:public Inimigo
+class BTK
 {
     public:
+        BTK(Texture* texture,Vector2f posicao, float trocaTempo);
+        virtual ~BTK();
 
-        JJ(Texture* texture,Vector2f posicao, float trocaTempo);
-        ~JJ();
         void Atualiza(float deltaTime);
         void Desenha(RenderWindow& window);
         Vector2f GetPosition();
         Collider GetCollider();
-        //void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
         bool GetAtira();
+
     protected:
 
     private:
+
         RectangleShape corpo;
         Animacao anima;
         unsigned int fileira;
-        float velocidade;
         Vector2f vel;
-        bool canJump;
         int counter=0;
-        bool jjAtira;
+        bool btkAtira;
 };
-#endif // APACHE_H
+
+#endif // BTK_H

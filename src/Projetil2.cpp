@@ -29,3 +29,6 @@ void Projetil2::Desenha(RenderWindow&window){
 Collider Projetil2::GetCollider(){
     return Collider (bala);
 }
+Vector2f Projetil2::GetPosition(){
+    return bala.getPosition();
+}
