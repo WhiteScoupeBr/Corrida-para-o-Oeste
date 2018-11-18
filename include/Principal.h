@@ -16,6 +16,7 @@
 #include "Menu2.h"
 #include "Pausa.h"
 #include "Pause.h"
+#include <windows.h>
 #include <string>
 #include <sstream>
 #include <vector>

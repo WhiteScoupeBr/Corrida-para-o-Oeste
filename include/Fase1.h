@@ -54,6 +54,7 @@ class Fase1
         std::vector<ProjInimigo>bala2;
         std::vector<Inimigo*>inimigos;
         std::vector<Vector2f>balaPos;
+        std::vector<Vector2f>balaPos2;
 };
 
 #endif // FASE1_H

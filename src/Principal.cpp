@@ -1,5 +1,6 @@
 #include "Principal.h"
-#include <windows.h>
+
+
 Principal::Principal()
 {
 
@@ -19,7 +20,7 @@ void Principal::Executar()
     Texture textureJogador1, textureJogador2;;
     textureJogador1.loadFromFile("sprite2.png");
     textureJogador2.loadFromFile("sprite22.png");
-    Jogador jogador1(&textureJogador1,Vector2u(8,12),0.1f,400.0f,128.f);
+    Jogador jogador1(&textureJogador1,Vector2u(8,12),0.1f,200.0f,128.f);
     Jogador2 jogador2(&textureJogador2,Vector2u(8,12),0.1f,200.0f,128.f);
 
     View view(Vector2f(0.0f,0.0f), Vector2f(800.f,600.f));
@@ -39,6 +40,7 @@ void Principal::Executar()
 
 
     Fase1 fase1;
+    Fase2 fase2;
 
     Menu menu1(window.getSize().x, window.getSize().y);
     //Menu2 menu2(window.getSize().x, window.getSize().y);
@@ -86,17 +88,17 @@ void Principal::Executar()
                         switch (menu1.GetPressedItem())
                         {
                         case 0:
-                            printf("\n Fase1 button has been pressed \n");
                             fase1Pronta=true;
                             menu1.Altera(window.getSize().x, window.getSize().y);
                             desenhaMenu=false;
                             desenhaMenu2=true;
-                            //Sleep(1000);
                             break;
                         case 1:
+                            fase2Pronta=true;
+                            menu1.Altera(window.getSize().x, window.getSize().y);
                             desenhaMenu2=true;
                             desenhaMenu=false;
-                            menu1.Altera(window.getSize().x, window.getSize().y);
+                            Sleep(500);
                             break;
                         case 2:
                             window.close();
@@ -111,7 +113,6 @@ void Principal::Executar()
 
               if(desenhaMenu2==true)
             {
-                printf("TESTE\n");
 
                 switch (event.type)
                 {
@@ -149,10 +150,6 @@ void Principal::Executar()
                     }
                 }
             }
-
-
-
-
 
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -227,18 +224,26 @@ void Principal::Executar()
         }
         else if (jogoPronto1==true && fase2Pronta)
         {
-            fase1.Executar(window,deltaTime,jogador1,view);
+
+            fase2.Executar(window,deltaTime,jogador1,view);
             jogador1.Desenha(window);
-            jogador1.Atualiza(deltaTime);
+            if(_pause==false){
+                jogador1.Atualiza(deltaTime);
+                fase2.Atualiza(deltaTime);
+            }
         }
-        else if (jogoPronto2==true && fase2Pronta)
+         else if (jogoPronto2==true && fase2Pronta)
         {
-            fase1.Executar(window,deltaTime,jogador1,view);
-            fase1.Executar2(window,deltaTime,jogador1,view,jogador2);
+            fase2.Executar2(window,deltaTime,jogador1,view,jogador2);
             jogador2.Desenha(window);
             jogador1.Desenha(window);
-            jogador1.Atualiza(deltaTime);
-            jogador2.Atualiza(deltaTime);
+
+            if(_pause==false)
+            {
+                jogador1.Atualiza(deltaTime);
+                jogador2.Atualiza(deltaTime);
+                fase2.Atualiza2(deltaTime);
+            }
         }
 
         if (desenhaMenu==true)

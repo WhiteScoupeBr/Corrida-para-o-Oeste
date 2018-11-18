@@ -67,14 +67,10 @@ Fase1::~Fase1()
 
 void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view){
 
-
-
-
-
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
     Sprite sprite(background);
-    sprite.setPosition(-250.f,-800.f);
+    sprite.setPosition(-250.f,-1500.f);
 
     std::string aux ("vidas: ");
     std::stringstream aux2;
@@ -255,12 +251,28 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     int caux2=0;
 
 
-    if(jogador1.GetAtira()==true){
+   if(jogador1.GetAtira()==true){
+        if(jogador1.GetDireita()){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
+        }
+        else
+         bala.push_back(Projetil(&bala22,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
+        gun.play();
+        for(Projetil& tiro : bala){
+        balaPos.push_back(tiro.GetPosition());
+        }
     }
 
-    if(jogador2.GetAtira()==true){
+     if(jogador2.GetAtira()==true){
+        if(jogador2.GetDireita()){
         bala2Jog.push_back(Projetil2(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador2.GetPosition().x+22.f,jogador2.GetPosition().y-19.f),jogador2));
+        }
+        else
+         bala2Jog.push_back(Projetil2(&bala22,Vector2f(10.0f,4.f),Vector2f(jogador2.GetPosition().x+22.f,jogador2.GetPosition().y-19.f),jogador2));
+        gun.play();
+        for(Projetil& tiro : bala){
+        balaPos2.push_back(tiro.GetPosition());
+        }
     }
 
     for(Inimigo* inimigo1 : inimigos){
@@ -275,6 +287,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             Collider(plat1)=inimigos[caux]->GetCollider();
             if(bala[caux2].GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
+               balaPos.erase(balaPos.begin()+caux2);
                bala.erase(bala.begin()+caux2);
             }
         }
@@ -286,8 +299,27 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             Collider(plat1)=inimigos[caux]->GetCollider();
             if(bala2Jog[caux2].GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
+               balaPos2.erase(balaPos2.begin()+caux2);
                bala2Jog.erase(bala2Jog.begin()+caux2);
             }
+        }
+  }
+
+  for(caux2=0; caux2<bala.size();caux2++){
+        for(caux=0;caux<balaPos.size(); caux++){
+                if(abs(bala[caux2].GetPosition().x-balaPos[caux].x)>500.f){
+                   balaPos.erase(balaPos.begin()+caux);
+                   bala.erase(bala.begin()+caux2);
+                }
+        }
+  }
+
+  for(caux2=0; caux2<bala2Jog.size();caux2++){
+        for(caux=0;caux<balaPos2.size(); caux++){
+                if(abs(bala2Jog[caux2].GetPosition().x-balaPos2[caux].x)>500.f){
+                   balaPos2.erase(balaPos2.begin()+caux);
+                   bala2Jog.erase(bala2Jog.begin()+caux2);
+                }
         }
   }
 

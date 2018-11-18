@@ -2,9 +2,11 @@
 
 Fase2::Fase2()
 {
-    background.loadFromFile("FundoFinal.jpg");
+    background.loadFromFile("FundoFinal.png");
     bar.loadFromFile("Saloon.png");
+    textureApache.loadFromFile("SpriteApache.png");
     chao.loadFromFile("chao.png");
+    chao21.loadFromFile("chaoFinal.png");
     cacto.loadFromFile("cacto.png");
     tnt.loadFromFile("tnt.png");
     bola.loadFromFile("bola.png");
@@ -15,7 +17,9 @@ Fase2::Fase2()
     buffer2.loadFromFile("Gun.wav");
     gun.setBuffer(buffer2);
 
-
+    Vector2u textureSizeApache = textureApache.getSize();
+    textureSizeApache.x/=8;
+    textureSizeApache.y/=1;
 
     invChao.push_back(Plataforma(nullptr,Vector2f(10000.f,100.f),Vector2f(90.f,350.f)));
 
@@ -24,33 +28,35 @@ Fase2::Fase2()
 
     plataformas.push_back(Plataforma(&chao,Vector2f(1000.f, 450.f), Vector2f(90.f, 200.f)));
 
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(750.f,-100.f)));//1
-    plataformas.push_back(Plataforma(&chao,Vector2f(250.f,50.f),Vector2f(1100.f,-180.f)));//2
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(1430.f,-100.f)));//3
-    plataformas.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(1820.f,-180.f)));//4
-    plataformas.push_back(Plataforma(&chao,Vector2f(500.f,50.f),Vector2f(2500.f,-230.f)));//5
-    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3000.f,-100.f)));//6
-    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3100.f,-180.f)));//7
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(3400.f,-240.f)));//8
-    plataformas.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(3780.f,-240.f)));//9
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(4200.f,-240.f)));//10
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(4400.f,-200.f)));//11
-    plataformas.push_back(Plataforma(&chao,Vector2f(1200.f,450.f),Vector2f(5150.f,200.f)));//12
-
-    //obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(200.f,-60.f)));
-    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(470.f,-60.f)));
-    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(3025.f,-160.f)));//1
-
-    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3800.f,-290.f)));//1
-
-    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(1170.f,-215.f)));//1
+    plataformas.push_back(Plataforma(&chao,Vector2f(500.f,50.f),Vector2f(1050.f,-50.f)));//1
+    plataformas.push_back(Plataforma(&chao,Vector2f(200.f,50.f),Vector2f(1600.f,-140.f)));//2
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(1900.f,-160.f)));//3
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2200.f,-260.f)));//4
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2200.f,-40.f)));//5
 
 
+    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(200.f,-60.f)));
 
-//    inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(3600.f,-290.f),0.1f));//1
+
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(1500.f,-180.f)));//1
+
+
+    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(850.f,-80.f)));//1
+
+
+    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(2100.f,-110.f),Vector2u(8,1),0.1f));//1
+    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(2100.f,-300.f),Vector2u(8,1),0.1f));//1
+
+
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(1250.f,-120.f),0.1f));//1
+
+
+
+    //inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(3600.f,-290.f),0.1f));//1
     //inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(4620.f,-70.f),0.1f));//2
 
-    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(750.f,-170.f),0.1f));//1
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(1250.f,-120.f),0.1f));//1
+
 }
 
 Fase2::~Fase2()
@@ -64,7 +70,7 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
     Sprite sprite(background);
-    sprite.setPosition(-250.f,-800.f);
+    sprite.setPosition(-250.f,-1550.f);
 
     std::string aux ("vidas: ");
     std::stringstream aux2;
@@ -74,6 +80,7 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
     vidas.setFont(fonte);
     int antiga=jogador1.getVida();
     int caux=0;
+    int caux2=0;
 
      if(jogador1.GetAtira()==true){
         if(jogador1.GetDireita()){
@@ -113,7 +120,7 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
                    bala.erase(bala.begin()+caux2);
                 }
         }
-  }
+    }
 
 
   for(Plataforma& plataforma : plataformas){
@@ -224,7 +231,7 @@ void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
     Sprite sprite(background);
-    sprite.setPosition(-250.f,-1150.f);
+    sprite.setPosition(-250.f,-1550.f);
 
     std::string aux21 ("vidas: ");
     std::stringstream aux22;
@@ -243,14 +250,30 @@ void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     vidas.setFont(fonte);
     int antiga=jogador1.getVida();
     int caux=0;
+    int caux2=0;
 
-
-    if(jogador1.GetAtira()==true){
+ if(jogador1.GetAtira()==true){
+        if(jogador1.GetDireita()){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
+        }
+        else
+         bala.push_back(Projetil(&bala22,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
+        gun.play();
+        for(Projetil& tiro : bala){
+        balaPos.push_back(tiro.GetPosition());
+        }
     }
 
-    if(jogador2.GetAtira()==true){
+     if(jogador2.GetAtira()==true){
+        if(jogador2.GetDireita()){
         bala2Jog.push_back(Projetil2(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador2.GetPosition().x+22.f,jogador2.GetPosition().y-19.f),jogador2));
+        }
+        else
+         bala2Jog.push_back(Projetil2(&bala22,Vector2f(10.0f,4.f),Vector2f(jogador2.GetPosition().x+22.f,jogador2.GetPosition().y-19.f),jogador2));
+        gun.play();
+        for(Projetil& tiro : bala){
+        balaPos2.push_back(tiro.GetPosition());
+        }
     }
 
     for(Inimigo* inimigo1 : inimigos){
@@ -260,24 +283,46 @@ void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
 
 
-  for(Projetil& tiro : bala){
+   for(caux2=0; caux2<bala.size();caux2++){
         for(caux=0;caux<inimigos.size(); caux++){
             Collider(plat1)=inimigos[caux]->GetCollider();
-            if(tiro.GetCollider().CheckColisao(plat1,direction,1.f)){
+            if(bala[caux2].GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
+               balaPos.erase(balaPos.begin()+caux2);
+               bala.erase(bala.begin()+caux2);
             }
         }
   }
 
-  for(Projetil2& tiro2 : bala2Jog){
+
+  for(caux2=0; caux2<bala2Jog.size();caux2++){
         for(caux=0;caux<inimigos.size(); caux++){
             Collider(plat1)=inimigos[caux]->GetCollider();
-            if(tiro2.GetCollider().CheckColisao(plat1,direction,1.f)){
+            if(bala2Jog[caux2].GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
+               balaPos2.erase(balaPos2.begin()+caux2);
+               bala2Jog.erase(bala2Jog.begin()+caux2);
             }
         }
   }
 
+  for(caux2=0; caux2<bala.size();caux2++){
+        for(caux=0;caux<balaPos.size(); caux++){
+                if(abs(bala[caux2].GetPosition().x-balaPos[caux].x)>500.f){
+                   balaPos.erase(balaPos.begin()+caux);
+                   bala.erase(bala.begin()+caux2);
+                }
+        }
+  }
+
+  for(caux2=0; caux2<bala2Jog.size();caux2++){
+        for(caux=0;caux<balaPos2.size(); caux++){
+                if(abs(bala2Jog[caux2].GetPosition().x-balaPos2[caux].x)>500.f){
+                   balaPos2.erase(balaPos2.begin()+caux);
+                   bala2Jog.erase(bala2Jog.begin()+caux2);
+                }
+        }
+  }
   for(Plataforma& plataforma : plataformas){
         Collider(plat1)=jogador1.GetCollider();
         if(plataforma.GetCollider().CheckColisao(plat1,direction,1.f))

@@ -7,7 +7,7 @@
 class BTK
 {
     public:
-        BTK(Texture* texture,Vector2f posicao, float trocaTempo);
+        BTK(Texture* texture, Vector2f posicao,Vector2u contImg, float trocaTempo);
         virtual ~BTK();
 
         void Atualiza(float deltaTime);

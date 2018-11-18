@@ -32,7 +32,7 @@ class Fase2
     protected:
 
     private:
-        Texture background,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
+        Texture background,textureApache,chao21,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
         Font fonte;
         Text vidas;
         Font fonte2;
@@ -51,6 +51,7 @@ class Fase2
         std::vector<ProjInimigo>bala2;
         std::vector<Inimigo*>inimigos;
         std::vector<Vector2f>balaPos;
+        std::vector<Vector2f>balaPos2;
 };
 
 #endif // FASE2_H

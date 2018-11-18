@@ -46,7 +46,7 @@ void BTK::Atualiza(float deltaTime){
     if(counter >8000)
         counter=0;
 
-    anima.Atualiza(0,deltaTime,direita);
+//    anima.Atualiza(0,deltaTime,direita);
     corpo.setTextureRect(anima.uvRect);
 
 }
