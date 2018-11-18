@@ -12,34 +12,45 @@ Fase1::Fase1()
     bala22.loadFromFile("bala2.png");
     jj.loadFromFile("jj.png");
     fonte.loadFromFile("Carnevalee Freakshow.ttf");
+    buffer2.loadFromFile("Gun.wav");
+    gun.setBuffer(buffer2);
+
 
 
     invChao.push_back(Plataforma(nullptr,Vector2f(10000.f,100.f),Vector2f(90.f,350.f)));
 
     invPlataforma.push_back(Plataforma(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));
+    invPlataforma.push_back(Plataforma(nullptr,Vector2f(400.f,1000.f),Vector2f(5400.f,-50.f)));
 
     plataformas.push_back(Plataforma(&chao,Vector2f(1000.f, 450.f), Vector2f(90.f, 200.f)));
 
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(750.f,-100.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(250.f,50.f),Vector2f(1100.f,-180.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(1430.f,-100.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(1820.f,-180.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(500.f,50.f),Vector2f(2500.f,-230.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3000.f,-100.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3100.f,-180.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(3400.f,-240.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(200.f,50.f),Vector2f(3600.f,-240.f)));
-    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(3850.f,-240.f)));
-
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(750.f,-100.f)));//1
+    plataformas.push_back(Plataforma(&chao,Vector2f(250.f,50.f),Vector2f(1100.f,-180.f)));//2
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(1430.f,-100.f)));//3
+    plataformas.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(1820.f,-180.f)));//4
+    plataformas.push_back(Plataforma(&chao,Vector2f(500.f,50.f),Vector2f(2500.f,-230.f)));//5
+    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3000.f,-100.f)));//6
+    plataformas.push_back(Plataforma(&chao,Vector2f(60.f,50.f),Vector2f(3100.f,-180.f)));//7
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(3400.f,-240.f)));//8
+    plataformas.push_back(Plataforma(&chao,Vector2f(400.f,50.f),Vector2f(3780.f,-240.f)));//9
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(4200.f,-240.f)));//10
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(4400.f,-200.f)));//11
+    plataformas.push_back(Plataforma(&chao,Vector2f(1200.f,450.f),Vector2f(5150.f,200.f)));//12
 
     //obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(200.f,-60.f)));
-    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(3025.f,-160.f)));
-    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3500.f,-290.f)));
-    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(1175.f,-215.f)));
+    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(470.f,-60.f)));
+    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(3025.f,-160.f)));//1
 
-    inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(3500.f,-290.f),0.1f));
-    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(760.f,-170.f),0.1f));
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3800.f,-290.f)));//1
 
+    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(1170.f,-215.f)));//1
+
+
+
+    inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(3600.f,-290.f),0.1f));//1
+    inimigos.push_back((Inimigo*)new Apache(&cacto,Vector2f(4620.f,-70.f),0.1f));//2
+
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(750.f,-170.f),0.1f));//1
 }
 
 Fase1::~Fase1()
@@ -48,6 +59,10 @@ Fase1::~Fase1()
 }
 
 void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view){
+
+
+
+
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
@@ -65,6 +80,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
     if(jogador1.GetAtira()==true){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
+        gun.play();
     }
 
 
@@ -73,17 +89,10 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             bala2.push_back(ProjInimigo(&bala22,Vector2f(10.f,4.f),Vector2f(inimigo1->GetPosition().x-22.f,inimigo1->GetPosition().y-22.f)));
     }
 
-  for(Projetil& tiro : bala)
-        tiro.Atualiza();
-  for(ProjInimigo& tiro : bala2)
-        tiro.Atualiza();
 
-    for(Inimigo* inimigo1 : inimigos)
-        inimigo1->Atualiza(deltaTime);
 
   for(Projetil& tiro : bala){
         for(caux=0;caux<inimigos.size(); caux++){
-            tiro.Atualiza();
             Collider(plat1)=inimigos[caux]->GetCollider();
             if(tiro.GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
@@ -105,7 +114,6 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
     for(Obstaculo* obstaculo: obs){
         Collider(plat1)=jogador1.GetCollider();
-        obstaculo->Atualiza(deltaTime);
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -121,7 +129,6 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
     for(Inimigo* inimigo1: inimigos){
         Collider(plat1)=jogador1.GetCollider();
-        inimigo1->Atualiza(deltaTime);
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -237,20 +244,10 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             bala2.push_back(ProjInimigo(&bala22,Vector2f(10.f,4.f),Vector2f(inimigo1->GetPosition().x-22.f,inimigo1->GetPosition().y-22.f)));
     }
 
-  for(Projetil& tiro : bala)
-        tiro.Atualiza();
-    for(Projetil2& tiro2 : bala2Jog)
-        tiro2.Atualiza();
-  for(ProjInimigo& tiro : bala2)
-        tiro.Atualiza();
 
-
-    for(Inimigo* inimigo1 : inimigos)
-        inimigo1->Atualiza(deltaTime);
 
   for(Projetil& tiro : bala){
         for(caux=0;caux<inimigos.size(); caux++){
-            tiro.Atualiza();
             Collider(plat1)=inimigos[caux]->GetCollider();
             if(tiro.GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
@@ -260,7 +257,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
   for(Projetil2& tiro2 : bala2Jog){
         for(caux=0;caux<inimigos.size(); caux++){
-            tiro2.Atualiza();
             Collider(plat1)=inimigos[caux]->GetCollider();
             if(tiro2.GetCollider().CheckColisao(plat1,direction,1.f)){
                inimigos.erase(inimigos.begin()+caux);
@@ -296,7 +292,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     for(Obstaculo* obstaculo: obs){
         Collider(plat1)=jogador1.GetCollider();
-        obstaculo->Atualiza(deltaTime);
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -313,7 +308,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     for(Obstaculo* obstaculo: obs){
         Collider(plat1)=jogador2.GetCollider();
-        obstaculo->Atualiza(deltaTime);
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -330,7 +324,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     for(Inimigo* inimigo1: inimigos){
         Collider(plat1)=jogador1.GetCollider();
-        inimigo1->Atualiza(deltaTime);
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -346,7 +339,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     for(Inimigo* inimigo1: inimigos){
         Collider(plat1)=jogador2.GetCollider();
-        inimigo1->Atualiza(deltaTime);
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
             for(int cMove =0;cMove<10000;cMove++)
@@ -363,7 +355,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
      for(caux=0; caux<bala2.size();caux++){
         Collider(plat1)=jogador1.GetCollider();
-        bala2[caux].Atualiza();
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
@@ -380,7 +371,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     for(caux=0; caux<bala2.size();caux++){
         Collider(plat1)=jogador2.GetCollider();
-        bala2[caux].Atualiza();
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
@@ -471,5 +461,38 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     window.setView(view);
     window.draw(vidas);
     window.draw(vidas2);
+
+}
+
+void Fase1::Atualiza(float deltaTime){
+
+    for(Projetil& tiro : bala)
+        tiro.Atualiza();
+    for(ProjInimigo& tiro : bala2)
+        tiro.Atualiza();
+
+    for(Inimigo* inimigo1 : inimigos)
+        inimigo1->Atualiza(deltaTime);
+
+    for(Obstaculo* obstaculo : obs)
+        obstaculo->Atualiza(deltaTime);
+
+}
+
+void Fase1::Atualiza2(float deltaTime){
+
+    for(Projetil& tiro : bala)
+        tiro.Atualiza();
+    for(ProjInimigo& tiro : bala2)
+        tiro.Atualiza();
+
+    for(Inimigo* inimigo1 : inimigos)
+        inimigo1->Atualiza(deltaTime);
+
+    for(Obstaculo* obstaculo : obs)
+        obstaculo->Atualiza(deltaTime);
+
+    for(Projetil2& tiro2 : bala2Jog)
+        tiro2.Atualiza();
 
 }

@@ -1,6 +1,7 @@
 #ifndef PRINCIPAL_H
 #define PRINCIPAL_H
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Animacao.h"
 //#include "Collider.h"
 //#include"jogador.h"
@@ -12,6 +13,7 @@
 #include "Fase1.h"
 #include "Menu.h"
 #include "Menu2.h"
+#include "Pausa.h"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -29,6 +31,11 @@ class Principal
     protected:
 
     private:
+    bool jogoPronto2 = false, jogoPronto1 = false,desenhaPause=false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false, fase2Pronta = false;
+    bool _pause=false;
+
+
+
 
 };
 

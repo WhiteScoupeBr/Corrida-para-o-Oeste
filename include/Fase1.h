@@ -1,6 +1,7 @@
 #ifndef FASE1_H
 #define FASE1_H
 #include<SFML/Graphics.hpp>
+#include<SFML/Audio.hpp>
 #include"Animacao.h"
 #include"Collider.h"
 #include"Cacto.h"
@@ -18,6 +19,9 @@
 #include "Jogador2.h"
 #include "Projetil2.h"
 
+using namespace sf;
+
+
 class Fase1
 {
     public:
@@ -25,6 +29,8 @@ class Fase1
         virtual ~Fase1();
         void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view);
         void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2);
+        void Atualiza(float deltaTime);
+        void Atualiza2(float deltaTime);
 
     protected:
 
@@ -34,6 +40,8 @@ class Fase1
         Text vidas;
         Font fonte2;
         Text vidas2;
+        SoundBuffer buffer2;
+        Sound gun;
 
         Vector2f direction;
 
@@ -45,7 +53,6 @@ class Fase1
         std::vector<Projetil2>bala2Jog;
         std::vector<ProjInimigo>bala2;
         std::vector<Inimigo*>inimigos;
-        //Plataforma invChao(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));
 };
 
 #endif // FASE1_H
