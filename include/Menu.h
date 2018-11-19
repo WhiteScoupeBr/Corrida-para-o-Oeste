@@ -3,7 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
-#define ITENS_MENU 4
+#define ITENS_MENU 5
 using namespace sf;
 
 class Menu
@@ -18,7 +18,7 @@ public:
 	int GetPressedItem() { return selectedItemIndex; }
 	void Altera(float width, float height);
 	void Altera2(float width, float height);
-	void setPosition(float width, float height);
+	void setPosition(float dx,float dy);
 
 private:
 	int selectedItemIndex;

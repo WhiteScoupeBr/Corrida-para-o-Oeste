@@ -41,16 +41,17 @@ void Principal::Executar()
     Fase2 fase2;
 
     Menu menu1(window.getSize().x, window.getSize().y);
-    //Menu2 menu2(window.getSize().x, window.getSize().y);
 
     Pause pause (window.getSize().x, window.getSize().y);
+
+
 
     float deltaTime=0.0f;
     Clock relogio;
 
+
     while (window.isOpen())
     {
-        printf("TESTE");
         deltaTime = relogio.restart().asSeconds();
         if(deltaTime>1.f/20.f)
             deltaTime=1.f/20.f;
@@ -64,7 +65,6 @@ void Principal::Executar()
 
         while (window.pollEvent(event))
         {
-
             if(desenhaMenu==true)
             {
                 switch (event.type)
@@ -123,7 +123,7 @@ void Principal::Executar()
                         }
                         break;
                         case 3:
-                            printf("RANK");
+                            printf("RANKING");
                             break;
                         case 4:
                             window.close();
@@ -159,6 +159,7 @@ void Principal::Executar()
                             _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
+
                             menu1.Altera2(window.getSize().x, window.getSize().y);
                             break;
                         case 1:
@@ -246,10 +247,12 @@ void Principal::Executar()
         if(_game)
         {
 
-//            start = std::clock();
+            start = std::clock();
 
-            if(_fimFase1)
+            if (_fimFase1)
+            {
                 fase1Pronta=false;
+            }
 
 
             if (jogoPronto2==false && fase1Pronta)
@@ -259,7 +262,7 @@ void Principal::Executar()
                     jogador1.setPosition(_posx,_posy);
                     _save=false;
                 }
-                fase1.Executar(window,deltaTime,jogador1,view,_fimFase1);
+                fase1.Executar(window,deltaTime,jogador1,view, _fimFase1);
                 jogador1.Desenha(window);
                 if(_pause==false)
                 {
@@ -276,7 +279,7 @@ void Principal::Executar()
                     jogador2.setPosition(_posx,_posy);
                     _save=false;
                 }
-                fase1.Executar2(window,deltaTime,jogador1,view,jogador2,_fimFase1);
+                fase1.Executar2(window,deltaTime,jogador1,view,jogador2, _fimFase1);
                 jogador2.Desenha(window);
                 jogador1.Desenha(window);
 
@@ -295,7 +298,7 @@ void Principal::Executar()
                     jogador1.setPosition(_posx,_posy);
                     _save=false;
                 }
-                fase2.Executar(window,deltaTime,jogador1,view,_fimFase2);
+                fase2.Executar(window,deltaTime,jogador1,view, _fimFase2);
                 jogador1.Desenha(window);
                 if(_pause==false)
                 {
@@ -311,7 +314,7 @@ void Principal::Executar()
                     jogador2.setPosition(_posx,_posy);
                     _save=false;
                 }
-                fase2.Executar2(window,deltaTime,jogador1,view,jogador2,_fimFase2);
+                fase2.Executar2(window,deltaTime,jogador1,view,jogador2, _fimFase2);
                 jogador2.Desenha(window);
                 jogador1.Desenha(window);
 
@@ -322,19 +325,23 @@ void Principal::Executar()
                     fase2.Atualiza2(deltaTime);
                 }
             }
-            if(_fimFase2)
-            {
-                //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-                _game=false;
-                desenhaMenu=true;
-            }
-
         }
 
+        if(_fimFase2)
+        {
+            fim = clock();
+            tempoTotal=fim-start;
+            duration = tempoTotal / (double) CLOCKS_PER_SEC;
+
+            _game=false;
+            desenhaMenu=true;
+        }
         if (desenhaMenu==true)
         {
-            if(_fimFase2)
-                menu1.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
+            if (_fimFase2)
+            {
+                menu1.setPosition(jogador1.GetPosition().x, jogador1.GetPosition().y);
+            }
             menu1.Desenha(window);
         }
         if (desenhaMenu2==true)
