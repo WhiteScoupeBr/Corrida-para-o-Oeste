@@ -53,7 +53,7 @@ bool BTK::GetAtira(){
 
     counter++;
      btkAtira=false;
-     if(counter>2000){
+     if(counter>1000){
         btkAtira=true;
         counter=0;
      }

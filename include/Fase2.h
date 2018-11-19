@@ -12,6 +12,7 @@
 #include"Plataforma.h"
 #include"Apache.h"
 #include "JJ.h"
+#include"BTK.h"
 #include "ProjInimigo.h"
 #include<string>
 #include<sstream>
@@ -24,15 +25,15 @@ class Fase2
      public:
         Fase2();
         virtual ~Fase2();
-        void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view);
-        void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2);
+        void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view,bool& _fimFase2);
+        void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2,bool& _fimFase2);
         void Atualiza(float deltaTime);
         void Atualiza2(float deltaTime);
 
     protected:
 
     private:
-        Texture background,textureApache,chao21,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
+        Texture background,billy,textureApache,chao21,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
         Font fonte;
         Text vidas;
         Font fonte2;

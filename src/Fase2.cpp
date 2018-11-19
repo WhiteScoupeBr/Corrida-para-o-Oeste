@@ -4,6 +4,7 @@ Fase2::Fase2()
 {
     background.loadFromFile("FundoFinal.png");
     bar.loadFromFile("Saloon.png");
+    billy.loadFromFile("BTK.png");
     textureApache.loadFromFile("SpriteApache.png");
     chao.loadFromFile("chaoFinal.png");
     chao21.loadFromFile("chaoFinal.png");
@@ -60,6 +61,8 @@ Fase2::Fase2()
     inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-90.f),0.1f));//2
     inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-350.f),0.1f));//3
 
+    //inimigos.push_back((Inimigo*)new BTK(&billy,Vector2f(300.f,-72.f),0.1f));//1
+
 
 
 }
@@ -69,7 +72,7 @@ Fase2::~Fase2()
     //dtor
 }
 
-void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view){
+void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view,bool& _fimFase2){
 
 
     Sprite saloon(bar);
@@ -86,7 +89,6 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
     int antiga=jogador1.getVida();
     int caux=0;
     int caux2=0;
-
      if(jogador1.GetAtira()==true){
         if(jogador1.GetDireita()){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
@@ -228,6 +230,11 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         antiga=jogador1.getVida();
     }
 
+     if(jogador1.GetPosition().x>400.f){
+        jogador1.setPosition(0.f,0.f);
+        _fimFase2=true;
+        }
+
     view.setCenter(jogador1.GetPosition().x+150.f,jogador1.GetPosition().y-(100.f));
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
 
@@ -236,7 +243,7 @@ void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
 }
 
-void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2){
+void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2,bool& _fimFase2){
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
@@ -281,7 +288,7 @@ void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         else
          bala2Jog.push_back(Projetil2(&bala22,Vector2f(10.0f,4.f),Vector2f(jogador2.GetPosition().x+22.f,jogador2.GetPosition().y-19.f),jogador2));
         gun.play();
-        for(Projetil& tiro : bala){
+        for(Projetil2& tiro : bala2Jog){
         balaPos2.push_back(tiro.GetPosition());
         }
     }
@@ -527,6 +534,12 @@ void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         inimigo->Desenha(window);
     for(ProjInimigo tiro : bala2)
         tiro.Desenha(window);
+
+     if(jogador1.GetPosition().x>400.f){
+        jogador1.setPosition(0.f,0.f);
+        jogador2.setPosition(0.f,0.f);
+        _fimFase2=true;
+        }
 
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
     vidas2.setPosition(jogador1.GetPosition().x-140, jogador1.GetPosition().y-400);

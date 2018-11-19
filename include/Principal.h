@@ -23,6 +23,8 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <ctime>
+#include <cstdio>
 
 using namespace sf;
 
@@ -38,9 +40,10 @@ class Principal
 
     private:
     bool jogoPronto2 = false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false;
-    bool _pause=false,_save=false, _fase1=false,_jog2 =false,_game=false;
+    bool _pause=false,_save=false, _fase1=false,_jog2 =false,_game=false,_fimFase1=false,_fimFase2=false;
     string fase1t,jog2,posx,posy;
     float _posx,_posy;
+
 
 
 

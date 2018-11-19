@@ -45,26 +45,26 @@ void Principal::Executar()
 
     Pause pause (window.getSize().x, window.getSize().y);
 
-
-
     float deltaTime=0.0f;
     Clock relogio;
 
-
     while (window.isOpen())
     {
+        printf("TESTE");
         deltaTime = relogio.restart().asSeconds();
         if(deltaTime>1.f/20.f)
             deltaTime=1.f/20.f;
 
         Event event;
 
-        if(desenhaMenu==true||desenhaMenu2==true){
+        if(desenhaMenu==true||desenhaMenu2==true)
+        {
             music2.play();
         }
 
         while (window.pollEvent(event))
         {
+
             if(desenhaMenu==true)
             {
                 switch (event.type)
@@ -97,30 +97,35 @@ void Principal::Executar()
                             Sleep(500);
                             break;
                         case 2:
+                        {
+                            _game =true;
+                            desenhaMenu=false;
+                            _save=true;
+                            string line;
+                            ifstream save("save.txt");
+                            if(save.is_open())
                             {
-                                _game =true;
-                                desenhaMenu=false;
-                                _save=true;
-                                string line;
-                                ifstream save("save.txt");
-                                if(save.is_open()){
-                                    while (getline(save,line)){
-                                        stringstream ss(line);
-                                        getline(ss,fase1t,',');
-                                        getline(ss,jog2,',');
-                                        getline(ss,posx,',');
-                                        getline(ss,posy,',');
-                                    }
+                                while (getline(save,line))
+                                {
+                                    stringstream ss(line);
+                                    getline(ss,fase1t,',');
+                                    getline(ss,jog2,',');
+                                    getline(ss,posx,',');
+                                    getline(ss,posy,',');
                                 }
-                                else
-                                    printf("Error opening save!");
-                              istringstream(fase1t) >> fase1Pronta;
-                              istringstream(jog2) >> jogoPronto2;
-                              _posx = std::stof(posx);
-                              _posy = std::stof (posy);
                             }
-                            break;
+                            else
+                                printf("Error opening save!");
+                            istringstream(fase1t) >> fase1Pronta;
+                            istringstream(jog2) >> jogoPronto2;
+                            _posx = std::stof(posx);
+                            _posy = std::stof (posy);
+                        }
+                        break;
                         case 3:
+                            printf("RANK");
+                            break;
+                        case 4:
                             window.close();
                             break;
                         }
@@ -130,7 +135,7 @@ void Principal::Executar()
 
             }
 
-              if(desenhaMenu2==true)
+            if(desenhaMenu2==true)
             {
 
                 switch (event.type)
@@ -154,12 +159,14 @@ void Principal::Executar()
                             _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
+                            menu1.Altera2(window.getSize().x, window.getSize().y);
                             break;
                         case 1:
                             jogoPronto2=true;
                             _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
+                            menu1.Altera2(window.getSize().x, window.getSize().y);
                             break;
                         case 2:
                             window.close();
@@ -182,7 +189,8 @@ void Principal::Executar()
                 Sleep(500);
             }
 
-            if(_pause==true){
+            if(_pause==true)
+            {
                 switch (event.type)
                 {
                 case sf::Event::KeyReleased:
@@ -203,26 +211,26 @@ void Principal::Executar()
                             _pause=false;
                             break;
                         case 1:
+                        {
+                            ofstream myfile ("save.txt");
+                            if (myfile.is_open())
                             {
-                                ofstream myfile ("save.txt");
-                                if (myfile.is_open())
-                                {
-                                  myfile << fase1Pronta;
-                                  myfile << ",";
-                                  myfile << jogoPronto2;
-                                  myfile << ",";
-                                  myfile << jogador1.GetPosition().x;
-                                  myfile << ",";
-                                  myfile << jogador1.GetPosition().y;
+                                myfile << fase1Pronta;
+                                myfile << ",";
+                                myfile << jogoPronto2;
+                                myfile << ",";
+                                myfile << jogador1.GetPosition().x;
+                                myfile << ",";
+                                myfile << jogador1.GetPosition().y;
                                 myfile.close();
                                 printf("Saved!");
-                                }
-
-                                else
-                                    printf("Unable to save!");
-
                             }
-                            break;
+
+                            else
+                                printf("Unable to save!");
+
+                        }
+                        break;
                         case 2:
                             window.close();
                             break;
@@ -235,78 +243,98 @@ void Principal::Executar()
 
         }
 
-        if(_game){
-
-
-        if (jogoPronto2==false && fase1Pronta)
+        if(_game)
         {
-            if(_save){
-                jogador1.setPosition(_posx,_posy);
-                _save=false;
-            }
-            fase1.Executar(window,deltaTime,jogador1,view);
-            jogador1.Desenha(window);
-            if(_pause==false)
+
+//            start = std::clock();
+
+            if(_fimFase1)
+                fase1Pronta=false;
+
+
+            if (jogoPronto2==false && fase1Pronta)
             {
-                jogador1.Atualiza(deltaTime);
-                fase1.Atualiza(deltaTime);
+                if(_save)
+                {
+                    jogador1.setPosition(_posx,_posy);
+                    _save=false;
+                }
+                fase1.Executar(window,deltaTime,jogador1,view,_fimFase1);
+                jogador1.Desenha(window);
+                if(_pause==false)
+                {
+                    jogador1.Atualiza(deltaTime);
+                    fase1.Atualiza(deltaTime);
 
+                }
             }
-        }
-        else if (jogoPronto2==true && fase1Pronta)
-        {
-            if(_save){
-                jogador1.setPosition(_posx,_posy);
-                jogador2.setPosition(_posx,_posy);
-                _save=false;
-            }
-            fase1.Executar2(window,deltaTime,jogador1,view,jogador2);
-            jogador2.Desenha(window);
-            jogador1.Desenha(window);
-
-            if(_pause==false)
+            else if (jogoPronto2==true && fase1Pronta)
             {
-                jogador1.Atualiza(deltaTime);
-                jogador2.Atualiza(deltaTime);
-                fase1.Atualiza2(deltaTime);
+                if(_save)
+                {
+                    jogador1.setPosition(_posx,_posy);
+                    jogador2.setPosition(_posx,_posy);
+                    _save=false;
+                }
+                fase1.Executar2(window,deltaTime,jogador1,view,jogador2,_fimFase1);
+                jogador2.Desenha(window);
+                jogador1.Desenha(window);
 
-            }
-        }
-        else if (jogoPronto2==false && fase1Pronta==false)
-        {
-            if(_save){
-                jogador1.setPosition(_posx,_posy);
-                _save=false;
-            }
-            fase2.Executar(window,deltaTime,jogador1,view);
-            jogador1.Desenha(window);
-            if(_pause==false){
-                jogador1.Atualiza(deltaTime);
-                fase2.Atualiza(deltaTime);
-            }
-        }
-         else if (jogoPronto2==true && fase1Pronta==false)
-        {
-            if(_save){
-                jogador1.setPosition(_posx,_posy);
-                jogador2.setPosition(_posx,_posy);
-                _save=false;
-            }
-            fase2.Executar2(window,deltaTime,jogador1,view,jogador2);
-            jogador2.Desenha(window);
-            jogador1.Desenha(window);
+                if(_pause==false)
+                {
+                    jogador1.Atualiza(deltaTime);
+                    jogador2.Atualiza(deltaTime);
+                    fase1.Atualiza2(deltaTime);
 
-            if(_pause==false)
+                }
+            }
+            else if (jogoPronto2==false && fase1Pronta==false)
             {
-                jogador1.Atualiza(deltaTime);
-                jogador2.Atualiza(deltaTime);
-                fase2.Atualiza2(deltaTime);
+                if(_save)
+                {
+                    jogador1.setPosition(_posx,_posy);
+                    _save=false;
+                }
+                fase2.Executar(window,deltaTime,jogador1,view,_fimFase2);
+                jogador1.Desenha(window);
+                if(_pause==false)
+                {
+                    jogador1.Atualiza(deltaTime);
+                    fase2.Atualiza(deltaTime);
+                }
             }
-        }
+            else if (jogoPronto2==true && fase1Pronta==false)
+            {
+                if(_save)
+                {
+                    jogador1.setPosition(_posx,_posy);
+                    jogador2.setPosition(_posx,_posy);
+                    _save=false;
+                }
+                fase2.Executar2(window,deltaTime,jogador1,view,jogador2,_fimFase2);
+                jogador2.Desenha(window);
+                jogador1.Desenha(window);
+
+                if(_pause==false)
+                {
+                    jogador1.Atualiza(deltaTime);
+                    jogador2.Atualiza(deltaTime);
+                    fase2.Atualiza2(deltaTime);
+                }
+            }
+            if(_fimFase2)
+            {
+                //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+                _game=false;
+                desenhaMenu=true;
+            }
+
         }
 
         if (desenhaMenu==true)
         {
+            if(_fimFase2)
+                menu1.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
             menu1.Desenha(window);
         }
         if (desenhaMenu2==true)

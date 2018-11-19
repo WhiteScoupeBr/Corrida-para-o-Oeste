@@ -27,8 +27,8 @@ class Fase1
     public:
         Fase1();
         virtual ~Fase1();
-        void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view);
-        void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2);
+        void Executar(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view,bool& _fimFase1);
+        void Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2,bool& _fimFase1);
         void Atualiza(float deltaTime);
         void Atualiza2(float deltaTime);
 
@@ -42,7 +42,6 @@ class Fase1
         Text vidas2;
         SoundBuffer buffer2;
         Sound gun;
-
         Vector2f direction;
 
         std::vector<Plataforma> plataformas;
