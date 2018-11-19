@@ -12,7 +12,7 @@ class Collider
         virtual ~Collider();
 
         void Movimento (float dx,float dy);
-        bool CheckColisao(Collider outro,Vector2f&direction, float push);
+        bool CheckColisao(Collider outro,Vector2f& direction, float push);
         Vector2f GetPosicao();
         Vector2f GetMeiaMedida();
 

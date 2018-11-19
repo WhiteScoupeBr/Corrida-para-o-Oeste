@@ -10,7 +10,7 @@ class Plataforma
     public:
         Plataforma(Texture* texture, Vector2f size, Vector2f posicao);
         ~Plataforma();
-        void Desenha(RenderWindow& janela);
+        void Desenha(RenderWindow& window);
         Collider GetCollider();
 
     protected:

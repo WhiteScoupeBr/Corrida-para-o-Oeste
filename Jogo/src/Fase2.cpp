@@ -1,12 +1,13 @@
-#include "Fase1.h"
+#include "Fase2.h"
 
-Fase1::Fase1()
+Fase2::Fase2()
 {
-    background.loadFromFile("FundoMaior.png");
-    textureApache.loadFromFile("SpriteApache.png");
+    background.loadFromFile("FundoFinal.png");
     bar.loadFromFile("Saloon.png");
-    chao.loadFromFile("chao.png");
-    chao21.loadFromFile("chao21.png");
+    billy.loadFromFile("BTK.png");
+    textureApache.loadFromFile("SpriteApache.png");
+    chao.loadFromFile("chaoFinal.png");
+    chao21.loadFromFile("chaoFinal.png");
     cacto.loadFromFile("cacto.png");
     tnt.loadFromFile("tnt.png");
     bola.loadFromFile("bola.png");
@@ -21,7 +22,6 @@ Fase1::Fase1()
     textureSizeApache.x/=8;
     textureSizeApache.y/=1;
 
-
     invChao.push_back(Plataforma(nullptr,Vector2f(10000.f,100.f),Vector2f(90.f,350.f)));
 
     invPlataforma.push_back(Plataforma(nullptr,Vector2f(400.f,1000.f),Vector2f(-200.f,-50.f)));
@@ -29,48 +29,56 @@ Fase1::Fase1()
 
     plataformas.push_back(Plataforma(&chao,Vector2f(1000.f, 450.f), Vector2f(90.f, 200.f)));
 
-    plataformas.push_back(Plataforma(&chao21,Vector2f(100.f,50.f),Vector2f(750.f,-100.f)));//1
-    plataformas.push_back(Plataforma(&chao21,Vector2f(250.f,50.f),Vector2f(1100.f,-180.f)));//2
-    plataformas.push_back(Plataforma(&chao21,Vector2f(100.f,50.f),Vector2f(1430.f,-100.f)));//3
-    plataformas.push_back(Plataforma(&chao21,Vector2f(400.f,50.f),Vector2f(1820.f,-180.f)));//4
-    plataformas.push_back(Plataforma(&chao21,Vector2f(500.f,50.f),Vector2f(2500.f,-230.f)));//5
-    plataformas.push_back(Plataforma(&chao21,Vector2f(60.f,50.f),Vector2f(3000.f,-100.f)));//6
-    plataformas.push_back(Plataforma(&chao21,Vector2f(60.f,50.f),Vector2f(3100.f,-180.f)));//7
-    plataformas.push_back(Plataforma(&chao21,Vector2f(100.f,50.f),Vector2f(3400.f,-240.f)));//8
-    plataformas.push_back(Plataforma(&chao21,Vector2f(400.f,50.f),Vector2f(3780.f,-240.f)));//9
-    plataformas.push_back(Plataforma(&chao21,Vector2f(100.f,50.f),Vector2f(4200.f,-240.f)));//10
-    plataformas.push_back(Plataforma(&chao21,Vector2f(100.f,50.f),Vector2f(4400.f,-200.f)));//11
-    plataformas.push_back(Plataforma(&chao,Vector2f(1200.f,450.f),Vector2f(5150.f,200.f)));//12
-
-    //obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(200.f,-60.f)));
-    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(470.f,-60.f)));
-    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(3025.f,-160.f)));//1
-
-    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3800.f,-290.f)));//1
-
-    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(1170.f,-215.f)));//1
+    plataformas.push_back(Plataforma(&chao,Vector2f(500.f,50.f),Vector2f(1050.f,-50.f)));//1
+    plataformas.push_back(Plataforma(&chao,Vector2f(200.f,50.f),Vector2f(1600.f,-140.f)));//2
+    plataformas.push_back(Plataforma(&chao,Vector2f(100.f,50.f),Vector2f(1900.f,-160.f)));//3
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2200.f,-280.f)));//4
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2200.f,-20.f)));//5
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2700.f,-280.f)));//6
+    plataformas.push_back(Plataforma(&chao,Vector2f(300.f,50.f),Vector2f(2700.f,-20.f)));//7
+    plataformas.push_back(Plataforma(&chao,Vector2f(3000.f,450.f),Vector2f(4650.f,200.f)));//8
 
 
 
-    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(2500.f,-300.f),Vector2u(8,1),0.1f));//1
-    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(3550.f,-310.f),Vector2u(8,1),0.1f));//2
-    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(4620.f,-70.f),Vector2u(8,1),0.1f));//3
+    obs.push_back((Obstaculo*)new Cacto(&cacto,Vector2f(46.f,80.f),Vector2f(200.f,-60.f)));
 
-    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(750.f,-170.f),0.1f));//1
-    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(1980.f,-250.f),0.1f));//1
+
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(1500.f,-180.f)));//1
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3150.f,-40.f)));//2
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3400.f,-40.f)));//3
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3650.f,-40.f)));//4
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(3900.f,-40.f)));//5
+    obs.push_back((Obstaculo*)new BolaFeno(&bola,Vector2f(30.f,30.f),Vector2f(4150.f,-40.f)));//6
+
+
+    obs.push_back((Obstaculo*)new Tnt(&tnt,Vector2f(30.f,30.f),Vector2f(850.f,-80.f)));//1
+
+
+    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(2100.f,-90.f),Vector2u(8,1),0.1f));//1
+    inimigos.push_back((Inimigo*)new Apache(&textureApache,Vector2f(2100.f,-350.f),Vector2u(8,1),0.1f));//2
+
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(1250.f,-120.f),0.1f));//1
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-90.f),0.1f));//2
+    inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-350.f),0.1f));//3
+
+    //inimigos.push_back((Inimigo*)new BTK(&billy,Vector2f(300.f,-72.f),0.1f));//1
+
+
+
 }
 
-Fase1::~Fase1()
+Fase2::~Fase2()
 {
     //dtor
 }
 
-void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view,bool& _fimFase1){
+void Fase2::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,View& view,bool& _fimFase2){
+
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
     Sprite sprite(background);
-    sprite.setPosition(-250.f,-1500.f);
+    sprite.setPosition(-250.f,-1550.f);
 
     std::string aux ("vidas: ");
     std::stringstream aux2;
@@ -81,8 +89,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
     int antiga=jogador1.getVida();
     int caux=0;
     int caux2=0;
-
-    if(jogador1.GetAtira()==true){
+     if(jogador1.GetAtira()==true){
         if(jogador1.GetDireita()){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
         }
@@ -94,10 +101,12 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         }
     }
 
+
     for(Inimigo* inimigo1 : inimigos){
         if(inimigo1->GetAtira())
             bala2.push_back(ProjInimigo(&bala22,Vector2f(10.f,4.f),Vector2f(inimigo1->GetPosition().x-22.f,inimigo1->GetPosition().y-22.f)));
     }
+
 
 
     for(caux2=0; caux2<bala.size();caux2++){
@@ -116,14 +125,14 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         }
   }
 
-  for(caux2=0; caux2<bala.size();caux2++){
+    for(caux2=0; caux2<bala.size();caux2++){
         for(caux=0;caux<balaPos.size(); caux++){
                 if(abs(bala[caux2].GetPosition().x-balaPos[caux].x)>580.f){
                    balaPos.erase(balaPos.begin()+caux);
                    bala.erase(bala.begin()+caux2);
                 }
         }
-  }
+    }
 
 
   for(Plataforma& plataforma : plataformas){
@@ -142,7 +151,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         Collider(plat1)=jogador1.GetCollider();
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
-            jogador1.Move(-100.f,-100.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
@@ -156,7 +165,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         Collider(plat1)=jogador1.GetCollider();
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
-            jogador1.Move(-100.f,-100.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
@@ -166,13 +175,14 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         }
     }
 
+
      for(caux=0; caux<bala2.size();caux++){
         Collider(plat1)=jogador1.GetCollider();
         bala2[caux].Atualiza();
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
-            jogador1.Move(-100.f,0.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-2);
             if(jogador1.getVida()<0)
             {
@@ -181,7 +191,6 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             }
         }
     }
-
 
      for(Plataforma plataforma: invChao){
         Collider(plat1)=jogador1.GetCollider();
@@ -221,10 +230,11 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         antiga=jogador1.getVida();
     }
 
-    if(jogador1.GetPosition().x>400.f){
+     if(jogador1.GetPosition().x>400.f){
         jogador1.setPosition(0.f,0.f);
-        _fimFase1=true;
-    }
+        _fimFase2=true;
+        }
+
     view.setCenter(jogador1.GetPosition().x+150.f,jogador1.GetPosition().y-(100.f));
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
 
@@ -233,12 +243,12 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
 }
 
-void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2,bool& _fimFase1){
+void Fase2::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,View& view, Jogador2& jogador2,bool& _fimFase2){
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
     Sprite sprite(background);
-    sprite.setPosition(-250.f,-1150.f);
+    sprite.setPosition(-250.f,-1550.f);
 
     std::string aux21 ("vidas: ");
     std::stringstream aux22;
@@ -259,8 +269,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     int caux=0;
     int caux2=0;
 
-
-   if(jogador1.GetAtira()==true){
+ if(jogador1.GetAtira()==true){
         if(jogador1.GetDireita()){
         bala.push_back(Projetil(&bala1,Vector2f(10.0f,4.f),Vector2f(jogador1.GetPosition().x+22.f,jogador1.GetPosition().y-19.f),jogador1));
         }
@@ -341,7 +350,6 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
                 }
         }
   }
-
   for(Plataforma& plataforma : plataformas){
         Collider(plat1)=jogador1.GetCollider();
         if(plataforma.GetCollider().CheckColisao(plat1,direction,1.f))
@@ -372,7 +380,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         Collider(plat1)=jogador1.GetCollider();
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
-            jogador1.Move(-100.f,-100.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
@@ -387,7 +395,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         Collider(plat1)=jogador2.GetCollider();
         if(obstaculo->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
-            jogador2.Move(-100.f,-100.f);
+            jogador2.Move(-50.f,-100.f);
             jogador2.setVida((jogador2.getVida())-1);
             if(jogador2.getVida()<0)
             {
@@ -402,7 +410,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         Collider(plat1)=jogador1.GetCollider();
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
-            jogador1.Move(-100.f,-100.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
@@ -416,7 +424,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         Collider(plat1)=jogador2.GetCollider();
         if(inimigo1->GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
-            jogador2.Move(-100.f,-100.f);
+            jogador2.Move(-50.f,-100.f);
             jogador2.setVida((jogador2.getVida())-1);
             if(jogador2.getVida()<0)
             {
@@ -432,7 +440,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador1.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
-            jogador1.Move(-100.f,0.f);
+            jogador1.Move(-50.f,-100.f);
             jogador1.setVida((jogador1.getVida())-2);
             if(jogador1.getVida()<0)
             {
@@ -447,7 +455,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
-            jogador2.Move(-100.f,0.f);
+            jogador2.Move(-50.f,-100.f);
             jogador2.setVida((jogador2.getVida())-2);
             if(jogador2.getVida()<0)
             {
@@ -527,11 +535,10 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     for(ProjInimigo tiro : bala2)
         tiro.Desenha(window);
 
-
-        if(jogador1.GetPosition().x>400.f){
+     if(jogador1.GetPosition().x>400.f){
         jogador1.setPosition(0.f,0.f);
         jogador2.setPosition(0.f,0.f);
-        _fimFase1=true;
+        _fimFase2=true;
         }
 
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
@@ -543,7 +550,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
 }
 
-void Fase1::Atualiza(float deltaTime){
+void Fase2::Atualiza(float deltaTime){
 
     for(Projetil& tiro : bala)
         tiro.Atualiza();
@@ -558,7 +565,7 @@ void Fase1::Atualiza(float deltaTime){
 
 }
 
-void Fase1::Atualiza2(float deltaTime){
+void Fase2::Atualiza2(float deltaTime){
 
     for(Projetil& tiro : bala)
         tiro.Atualiza();

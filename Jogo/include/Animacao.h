@@ -9,6 +9,7 @@ using namespace sf;
 class Animacao
 {
     public:
+        Animacao(){};
         Animacao(Texture* texture, Vector2u contImg, float trocaTempo);
         virtual ~Animacao();
         void Atualiza(int fileira, float deltaTime, bool direita);

@@ -1,18 +1,17 @@
-#ifndef JOGADOR_H
-#define JOGADOR_H
+#ifndef JOGADOR2_H
+#define JOGADOR2_H
 #include "Animacao.h"
 #include "Collider.h"
-//#include "Personagem.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 
-class Jogador
+class Jogador2
 {
     public:
-        Jogador(){};
-        Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight);
-        virtual ~Jogador();
+        Jogador2(){};
+        Jogador2(Texture* texture, Vector2u contImg, float trocaTempo,float velocidade,float jumpHeight);
+        virtual ~Jogador2();
         void Atualiza(float deltaTime);
         void Desenha(RenderWindow& janela);
         Vector2f GetPosition();
@@ -41,4 +40,4 @@ class Jogador
         float counter;
 };
 
-#endif // JOGADOR_H
+#endif // JOGADOR2_H
