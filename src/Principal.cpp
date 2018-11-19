@@ -36,8 +36,6 @@ void Principal::Executar()
     Music music,music2;
     music.openFromFile("Cash.wav");
     music2.openFromFile("Good.wav");
-    //music.play();
-
 
     Fase1 fase1;
     Fase2 fase2;
@@ -46,8 +44,6 @@ void Principal::Executar()
     //Menu2 menu2(window.getSize().x, window.getSize().y);
 
     Pause pause (window.getSize().x, window.getSize().y);
-
-
 
 
 
@@ -94,16 +90,39 @@ void Principal::Executar()
                             desenhaMenu2=true;
                             break;
                         case 1:
-                            fase2Pronta=true;
+                            fase1Pronta=false;
                             menu1.Altera(window.getSize().x, window.getSize().y);
                             desenhaMenu2=true;
                             desenhaMenu=false;
                             Sleep(500);
                             break;
                         case 2:
+                            {
+                                _game =true;
+                                desenhaMenu=false;
+                                _save=true;
+                                string line;
+                                ifstream save("save.txt");
+                                if(save.is_open()){
+                                    while (getline(save,line)){
+                                        stringstream ss(line);
+                                        getline(ss,fase1t,',');
+                                        getline(ss,jog2,',');
+                                        getline(ss,posx,',');
+                                        getline(ss,posy,',');
+                                    }
+                                }
+                                else
+                                    printf("Error opening save!");
+                              istringstream(fase1t) >> fase1Pronta;
+                              istringstream(jog2) >> jogoPronto2;
+                              _posx = std::stof(posx);
+                              _posy = std::stof (posy);
+                            }
+                            break;
+                        case 3:
                             window.close();
                             break;
-
                         }
                         break;
                     }
@@ -131,13 +150,14 @@ void Principal::Executar()
                         switch (menu1.GetPressedItem())
                         {
                         case 0:
-                            printf("\n Jogador1 button has been pressed \n");
-                            jogoPronto1=true;
+                            jogoPronto2=false;
+                            _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
                             break;
                         case 1:
                             jogoPronto2=true;
+                            _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
                             break;
@@ -183,7 +203,25 @@ void Principal::Executar()
                             _pause=false;
                             break;
                         case 1:
-                            //save
+                            {
+                                ofstream myfile ("save.txt");
+                                if (myfile.is_open())
+                                {
+                                  myfile << fase1Pronta;
+                                  myfile << ",";
+                                  myfile << jogoPronto2;
+                                  myfile << ",";
+                                  myfile << jogador1.GetPosition().x;
+                                  myfile << ",";
+                                  myfile << jogador1.GetPosition().y;
+                                myfile.close();
+                                printf("Saved!");
+                                }
+
+                                else
+                                    printf("Unable to save!");
+
+                            }
                             break;
                         case 2:
                             window.close();
@@ -197,8 +235,15 @@ void Principal::Executar()
 
         }
 
-        if (jogoPronto1==true && fase1Pronta)
+        if(_game){
+
+
+        if (jogoPronto2==false && fase1Pronta)
         {
+            if(_save){
+                jogador1.setPosition(_posx,_posy);
+                _save=false;
+            }
             fase1.Executar(window,deltaTime,jogador1,view);
             jogador1.Desenha(window);
             if(_pause==false)
@@ -210,6 +255,11 @@ void Principal::Executar()
         }
         else if (jogoPronto2==true && fase1Pronta)
         {
+            if(_save){
+                jogador1.setPosition(_posx,_posy);
+                jogador2.setPosition(_posx,_posy);
+                _save=false;
+            }
             fase1.Executar2(window,deltaTime,jogador1,view,jogador2);
             jogador2.Desenha(window);
             jogador1.Desenha(window);
@@ -222,9 +272,12 @@ void Principal::Executar()
 
             }
         }
-        else if (jogoPronto1==true && fase2Pronta)
+        else if (jogoPronto2==false && fase1Pronta==false)
         {
-
+            if(_save){
+                jogador1.setPosition(_posx,_posy);
+                _save=false;
+            }
             fase2.Executar(window,deltaTime,jogador1,view);
             jogador1.Desenha(window);
             if(_pause==false){
@@ -232,8 +285,13 @@ void Principal::Executar()
                 fase2.Atualiza(deltaTime);
             }
         }
-         else if (jogoPronto2==true && fase2Pronta)
+         else if (jogoPronto2==true && fase1Pronta==false)
         {
+            if(_save){
+                jogador1.setPosition(_posx,_posy);
+                jogador2.setPosition(_posx,_posy);
+                _save=false;
+            }
             fase2.Executar2(window,deltaTime,jogador1,view,jogador2);
             jogador2.Desenha(window);
             jogador1.Desenha(window);
@@ -244,6 +302,7 @@ void Principal::Executar()
                 jogador2.Atualiza(deltaTime);
                 fase2.Atualiza2(deltaTime);
             }
+        }
         }
 
         if (desenhaMenu==true)

@@ -8,6 +8,8 @@ anima(texture,contImg,trocaTempo)
     corpo.setOrigin(corpo.getSize()/2.f);
     corpo.setTexture(texture);
     corpo.setPosition(posicao);
+    vida =2;
+    id=1;
 };
 Apache::~Apache()
 {
@@ -56,3 +58,12 @@ bool Apache::GetAtira(){
     return false;
 }
 
+void Apache::setVida(int x){
+     vida=x;
+}
+int Apache::getVida(){
+    return vida;
+}
+int Apache::getId(){
+    return id;
+}

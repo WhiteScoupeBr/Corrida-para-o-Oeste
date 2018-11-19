@@ -17,6 +17,9 @@ class Apache:public Inimigo
         //void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
         bool GetAtira();
+        int getVida();
+        void setVida(int x);
+        int getId();
 
     protected:
 
@@ -28,6 +31,7 @@ class Apache:public Inimigo
         Vector2f vel;
         bool direita;
         int counter=0;
-
+        int vida;
+        int id;
 };
 #endif // APACHE_H

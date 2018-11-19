@@ -4,18 +4,20 @@
 #include "Animacao.h"
 #include "Inimigo.h"
 
-class BTK
+class BTK:public Inimigo
 {
     public:
-        BTK(Texture* texture, Vector2f posicao,Vector2u contImg, float trocaTempo);
-        virtual ~BTK();
-
+        BTK(Texture* texture,Vector2f posicao, float trocaTempo);
+        ~BTK();
         void Atualiza(float deltaTime);
         void Desenha(RenderWindow& window);
         Vector2f GetPosition();
         Collider GetCollider();
         void setPosition(float dx, float dy);
         bool GetAtira();
+        int getVida();
+        void setVida(int x);
+        int getId();
 
     protected:
 
@@ -27,6 +29,8 @@ class BTK
         Vector2f vel;
         int counter=0;
         bool btkAtira;
+        int vida ;
+        int id;
 };
 
 #endif // BTK_H

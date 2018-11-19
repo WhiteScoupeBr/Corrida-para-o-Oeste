@@ -17,6 +17,10 @@ class JJ:public Inimigo
         //void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
         bool GetAtira();
+        int getVida();
+        void setVida(int x);
+        int getId();
+
     protected:
 
     private:
@@ -28,5 +32,7 @@ class JJ:public Inimigo
         bool canJump;
         int counter=0;
         bool jjAtira;
+        int vida;
+        int id;
 };
 #endif // APACHE_H

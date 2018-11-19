@@ -1,8 +1,7 @@
 #include "BTK.h"
 
 
-BTK::BTK(Texture* texture, Vector2f posicao,Vector2u contImg, float trocaTempo):
-anima(texture,contImg,trocaTempo)
+BTK::BTK(Texture* texture,Vector2f posicao, float trocaTempo)
 {
     fileira=0;
     corpo.setSize(Vector2f(56.0f,96.0f));
@@ -10,6 +9,8 @@ anima(texture,contImg,trocaTempo)
     corpo.setTexture(texture);
     corpo.setPosition(posicao);
     btkAtira=false;
+    vida=10;
+    id=3;
 };
 BTK::~BTK()
 {
@@ -46,9 +47,6 @@ void BTK::Atualiza(float deltaTime){
     if(counter >8000)
         counter=0;
 
-//    anima.Atualiza(0,deltaTime,direita);
-    corpo.setTextureRect(anima.uvRect);
-
 }
 
 bool BTK::GetAtira(){
@@ -59,4 +57,14 @@ bool BTK::GetAtira(){
         btkAtira=true;
         counter=0;
      }
+}
+
+void BTK::setVida(int x){
+     vida=x;
+}
+int BTK::getVida(){
+    return vida;
+}
+int BTK::getId(){
+    return id;
 }

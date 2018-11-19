@@ -9,6 +9,8 @@ JJ::JJ(Texture* texture,Vector2f posicao, float trocaTempo)
     corpo.setTexture(texture);
     corpo.setPosition(posicao);
     jjAtira=false;
+    vida=1;
+    id=2;
 };
 JJ::~JJ()
 {
@@ -45,3 +47,12 @@ bool JJ::GetAtira(){
     return jjAtira;
 }
 
+void JJ::setVida(int x){
+     vida=x;
+}
+int JJ::getVida(){
+    return vida;
+}
+int JJ::getId(){
+    return id;
+}

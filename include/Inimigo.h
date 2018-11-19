@@ -12,6 +12,9 @@ class Inimigo:public Entidade
         virtual void Atualiza(float deltaTime)=0;
         virtual bool GetAtira()=0;
         virtual Vector2f GetPosition()=0;
+        virtual int getVida()=0;
+        virtual void setVida(int x)=0;
+        virtual int getId()=0;
 
     protected:
 

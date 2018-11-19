@@ -16,6 +16,9 @@
 #include "Menu2.h"
 #include "Pausa.h"
 #include "Pause.h"
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
 #include <windows.h>
 #include <string>
 #include <sstream>
@@ -34,8 +37,11 @@ class Principal
     protected:
 
     private:
-    bool jogoPronto2 = false, jogoPronto1 = false,desenhaPause=false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false, fase2Pronta = false;
-    bool _pause=false;
+    bool jogoPronto2 = false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false;
+    bool _pause=false,_save=false, _fase1=false,_jog2 =false,_game=false;
+    string fase1t,jog2,posx,posy;
+    float _posx,_posy;
+
 
 
 

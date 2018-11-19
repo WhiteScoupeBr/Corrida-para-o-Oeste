@@ -3,7 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
-#define ITENS_MENU 3
+#define ITENS_MENU 4
 using namespace sf;
 
 class Menu
@@ -22,6 +22,7 @@ private:
 	int selectedItemIndex;
 	Font font;
 	Text menu[ITENS_MENU];
+	int maximo =4;
 
 };
 
