@@ -91,6 +91,24 @@ void Menu::Altera(float width, float height){
 
 }
 
+void Menu::Altera2(float width, float height){
+    menu[0].setFont(font);
+	menu[0].setColor(sf::Color::Red);
+	menu[0].setString("Ranking");
+	menu[0].setPosition(width +100, height-200 );
+
+	menu[1].setFont(font);
+	menu[1].setColor(sf::Color::White);
+	menu[1].setString("Sair");
+	menu[1].setPosition(width +100, height-100);
+
+
+    maximo=2;
+
+	selectedItemIndex = 0;
+
+}
+
 void Menu::setPosition(float dx,float dy)
 {
 

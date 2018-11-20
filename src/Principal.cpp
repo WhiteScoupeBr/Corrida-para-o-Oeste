@@ -4,6 +4,7 @@
 Principal::Principal()
 {
 
+
 }
 
 Principal::~Principal()
@@ -51,12 +52,6 @@ void Principal::Executar()
         // handle error
     }
     Text text(nome,font,40);
-
-
-    //std::stringstream ss2;
-    //ss2 <<nome<<".txt" ;
-    //std::string texto = ss2.str();
-    //std::cout <<texto;
 
 
     float deltaTime=0.0f;
@@ -288,7 +283,7 @@ void Principal::Executar()
                 }
             }
 
-            if(_fimFase2==true)
+             if(desenhaFinal==true)
             {
                 switch (event.type)
                 {
@@ -296,20 +291,20 @@ void Principal::Executar()
                     switch (event.key.code)
                     {
                     case sf::Keyboard::Up:
-                        menu2.MoveUp();
+                        pause.MoveUp();
                         break;
 
                     case sf::Keyboard::Down:
-                        menu2.MoveDown();
+                        pause.MoveDown();
                         break;
 
                     case sf::Keyboard::Return:
-                        switch (menu2.GetPressedItem())
+                        switch (pause.GetPressedItem())
                         {
                         case 0:
-                            //ranking
+                            //rank
                             break;
-                        case 1:
+                        case  1:
                             window.close();
                             break;
 
@@ -318,7 +313,6 @@ void Principal::Executar()
                     }
                 }
             }
-
         }
 
         if(_game)
@@ -412,9 +406,31 @@ void Principal::Executar()
             HighScore aux;
             HighScore antigo;
             HighScore novo;
+            nome1=nome;
             novo.nome=nome1;
             novo.score=finalScore;
             int i, j;
+            for(i=0;i<10;i++){
+                scoreFinal[i].nome=" ";
+                scoreFinal[i].score=0;
+            }
+            ifstream rank1;
+            rank1=("rank.txt");
+            string line;
+             if("rank.txt")
+                {
+                    while (getline(rank1,line))
+                    {
+                        for(int rankaux=0;rankaux<10;rankaux++){
+                            stringstream ss(line);
+                            getline(ss,scoreFinal[i].nome,',');
+                            getline(ss,scoreFinal[i].score,',');
+                        }
+                    }
+                }
+                else
+                    printf("Error opening save!");
+
             for (i = 0; i < 10-1; i++)
             {
                 for (j = 0; j < 10-i-1; j++)
@@ -433,24 +449,37 @@ void Principal::Executar()
                 {
                     for(int j=i; j<10; j++)
                     {
-
                         antigo=scoreFinal[j];
                         scoreFinal[j-1]=novo;
                         novo=antigo;
                     }
+                    scoreFinal[i].nome=nome1;
                 }
             }
+
+                            ofstream myfile ("rank.txt");
+                            if (myfile.is_open())
+                            {
+                                for(int rankaux=0;rankaux<10;rankaux++){
+                                myfile << scoreFinal[rankaux].nome;
+                                myfile << ",";
+                                myfile << scoreFinal[rankaux].score;
+                                myfile << ",";
+                                }
+                                myfile.close();
+                                printf("Saved!");
+                            }
+
+                            else
+                                printf("Unable to save!");
+
             desenhaFinal=true;
-            menu2.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
             _fimFase2=false;
-
-
         }
 
         if(desenhaFinal){
-
-
-            menu2.Desenha(window);
+            menu1.Altera2(jogador1.GetPosition().x,jogador1.GetPosition().y);
+            menu1.Desenha(window);
         }
 
         if (desenhaMenu==true)

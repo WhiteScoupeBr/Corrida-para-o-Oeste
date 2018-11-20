@@ -9,7 +9,9 @@
 #include "Menu.h"
 #include "Menu2.h"
 #include "Pause.h"
-#include "MenuFinal.h"
+#include"Jogador2.h"
+#include"jogador.h"
+//#include "MenuFinal.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
