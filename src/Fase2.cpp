@@ -62,7 +62,7 @@ Fase2::Fase2()
     inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-90.f),0.1f));//2
     inimigos.push_back((Inimigo*)new JJ(&jj,Vector2f(2800.f,-350.f),0.1f));//3
 
-    //inimigos.push_back((Inimigo*)new BTK(&billy,Vector2f(300.f,-72.f),0.1f));//1
+    inimigos.push_back((Inimigo*)new BTK(&billy,Vector2f(300.f,-72.f),0.1f));//1
 
 
 

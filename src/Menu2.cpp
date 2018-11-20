@@ -50,7 +50,7 @@ void Menu2::MoveDown()
 
 void Menu2::setPosition(float dx,float dy)
 {
-    menu[0].setPosition(sf::Vector2f(dx+100, dy-200));
+    menu[0].setPosition(sf::Vector2f(dx, dy));
     menu[1].setPosition(sf::Vector2f(dx+100, dy-100));
 
 }

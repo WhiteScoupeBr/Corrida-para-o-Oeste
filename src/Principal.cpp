@@ -408,8 +408,48 @@ void Principal::Executar()
         if(_fimFase2)
         {
             _game=false;
-            int scorefinal=jogador1.GetScore();
+            int finalScore = jogador1.GetScore();
+            HighScore aux;
+            HighScore antigo;
+            HighScore novo;
+            novo.nome=nome1;
+            novo.score=finalScore;
+            int i, j;
+            for (i = 0; i < 10-1; i++)
+            {
+                for (j = 0; j < 10-i-1; j++)
+                {
+                    if (scoreFinal[j].score < scoreFinal[j+1].score)
+                    {
+                        aux=scoreFinal[j];
+                        scoreFinal[j]=scoreFinal[j+1];
+                        scoreFinal[j+1]=aux;
+                    }
+                }
+            }
+            for(i=0; i<10; i++)
+            {
+                if(finalScore>scoreFinal[i].score)
+                {
+                    for(int j=i; j<10; j++)
+                    {
+
+                        antigo=scoreFinal[j];
+                        scoreFinal[j-1]=novo;
+                        novo=antigo;
+                    }
+                }
+            }
+            desenhaFinal=true;
             menu2.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
+            _fimFase2=false;
+
+
+        }
+
+        if(desenhaFinal){
+
+
             menu2.Desenha(window);
         }
 
