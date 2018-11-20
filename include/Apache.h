@@ -16,10 +16,10 @@ class Apache:public Inimigo
         Collider GetCollider();
         //void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
-        bool GetAtira();
-        int getVida();
+        bool GetAtira()const;
+        int getVida()const;
         void setVida(int x);
-        int getId();
+        int getId()const;
 
     protected:
 

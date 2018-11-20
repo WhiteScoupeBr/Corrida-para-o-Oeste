@@ -26,9 +26,9 @@ void Projetil::Desenha(RenderWindow&window){
     window.draw(bala);
 }
 
-Collider Projetil::GetCollider(){
+Collider Projetil::GetCollider (){
     return Collider (bala);
 }
-Vector2f Projetil::GetPosition(){
+Vector2f Projetil::GetPosition() {
     return bala.getPosition();
 }

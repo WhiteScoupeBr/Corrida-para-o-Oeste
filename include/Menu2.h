@@ -1,7 +1,7 @@
 #ifndef MENU2_H
 #define MENU2_H
 #include<SFML/Graphics.hpp>
-#define ITENS_MENU 3
+#define ITENS_MENU 2
 
 using namespace sf;
 
@@ -14,6 +14,7 @@ class Menu2
         void MoveUp();
         void MoveDown();
         int GetPressedItem() { return selectedItemIndex; }
+        void setPosition(float dx,float dy);
 
 private:
 	int selectedItemIndex;

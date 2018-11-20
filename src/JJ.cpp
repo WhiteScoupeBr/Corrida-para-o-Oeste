@@ -43,16 +43,16 @@ void JJ::Atualiza(float deltaTime){
      }
 }
 
-bool JJ::GetAtira(){
+bool JJ::GetAtira()const{
     return jjAtira;
 }
 
 void JJ::setVida(int x){
      vida=x;
 }
-int JJ::getVida(){
+int JJ::getVida()const{
     return vida;
 }
-int JJ::getId(){
+int JJ::getId()const{
     return id;
 }

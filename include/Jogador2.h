@@ -18,11 +18,11 @@ class Jogador2
         Collider GetCollider();
         void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
-        int getVida();
+        int getVida()const;
         void setVida(int x);
         void Move(float dx,float dy);
-        bool GetDireita();
-        bool GetAtira();
+        bool GetDireita()const;
+        bool GetAtira()const;
 
     protected:
 

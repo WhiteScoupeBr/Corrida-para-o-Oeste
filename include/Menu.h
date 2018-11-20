@@ -17,7 +17,6 @@ public:
 	void MoveDown();
 	int GetPressedItem() { return selectedItemIndex; }
 	void Altera(float width, float height);
-	void Altera2(float width, float height);
 	void setPosition(float dx,float dy);
 
 private:

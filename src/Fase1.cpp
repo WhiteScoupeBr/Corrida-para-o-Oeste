@@ -4,6 +4,7 @@ Fase1::Fase1()
 {
     background.loadFromFile("FundoMaior.png");
     textureApache.loadFromFile("SpriteApache.png");
+    bandeira.loadFromFile("Bandeira.png");
     bar.loadFromFile("Saloon.png");
     chao.loadFromFile("chao.png");
     chao21.loadFromFile("chao21.png");
@@ -69,8 +70,20 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
+
     Sprite sprite(background);
     sprite.setPosition(-250.f,-1500.f);
+
+    Sprite bandeiraFim(bandeira);
+    bandeiraFim.setPosition(5125.f,-70.f);
+
+    std::string score ("Score: ");
+    std::stringstream score2;
+    score2 << jogador1.GetScore();
+    score += score2.str();
+    scoreT.setString(score);
+    scoreT.setFont(fonte);
+    int antigascore=jogador1.GetScore();
 
     std::string aux ("vidas: ");
     std::stringstream aux2;
@@ -107,6 +120,10 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
                     bala.erase(bala.begin()+caux2);
                     balaPos.erase(balaPos.begin()+caux2);
                     if(inimigos[caux]->getVida()<=1){
+                        if(inimigos[caux]->getId()==3)
+                            jogador1.setScore(jogador1.GetScore()+50);
+                        else
+                            jogador1.setScore(jogador1.GetScore()+10);
                         inimigos.erase(inimigos.begin()+caux);
                     }
                     else{
@@ -146,6 +163,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -160,6 +178,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -176,6 +195,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-2);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -190,6 +210,7 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-6);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -221,15 +242,28 @@ void Fase1::Executar(RenderWindow& window,float deltaTime, Jogador& jogador1,Vie
         antiga=jogador1.getVida();
     }
 
-    if(jogador1.GetPosition().x>400.f){
+    if (jogador1.GetScore()!=antigascore)
+    {
+        score2.str("");
+        score2 << jogador1.GetScore();
+        score = ("Score: ");
+        score += score2.str();
+        scoreT.setString(score);
+        antigascore=jogador1.GetScore();
+    }
+
+    if(jogador1.GetPosition().x>5100.f){
         jogador1.setPosition(0.f,0.f);
         _fimFase1=true;
     }
+
     view.setCenter(jogador1.GetPosition().x+150.f,jogador1.GetPosition().y-(100.f));
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
+    scoreT.setPosition(jogador1.GetPosition().x+400, jogador1.GetPosition().y-400);
 
     window.setView(view);
     window.draw(vidas);
+    window.draw(scoreT);
 
 }
 
@@ -237,8 +271,20 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     Sprite saloon(bar);
     saloon.setPosition(-260.f,-385.f);
+
     Sprite sprite(background);
     sprite.setPosition(-250.f,-1150.f);
+
+    Sprite bandeiraFim(bandeira);
+    bandeiraFim.setPosition(5125.f,-70.f);
+
+    std::string score ("Score: ");
+    std::stringstream score2;
+    score2 << jogador1.GetScore();
+    score += score2.str();
+    scoreT.setString(score);
+    scoreT.setFont(fonte);
+    int antigascore=jogador1.GetScore();
 
     std::string aux21 ("vidas: ");
     std::stringstream aux22;
@@ -298,6 +344,10 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
                     bala.erase(bala.begin()+caux2);
                     balaPos.erase(balaPos.begin()+caux2);
                     if(inimigos[caux]->getVida()<=1){
+                        if(inimigos[caux]->getId()==3)
+                            jogador1.setScore(jogador1.GetScore()+50);
+                        else
+                            jogador1.setScore(jogador1.GetScore()+10);
                         inimigos.erase(inimigos.begin()+caux);
                     }
                     else{
@@ -315,6 +365,10 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
                     bala2Jog.erase(bala2Jog.begin()+caux2);
                     balaPos2.erase(balaPos2.begin()+caux2);
                     if(inimigos[caux]->getVida()<=1){
+                        if(inimigos[caux]->getId()==3)
+                            jogador1.setScore(jogador1.GetScore()+50);
+                        else
+                            jogador1.setScore(jogador1.GetScore()+10);
                         inimigos.erase(inimigos.begin()+caux);
                     }
                     else{
@@ -376,6 +430,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -391,6 +446,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador2.setVida((jogador2.getVida())-1);
             if(jogador2.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador2.setPosition(0.f,-400.f);
                 jogador2.setVida(5);
             }
@@ -406,6 +462,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-1);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -420,6 +477,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador2.setVida((jogador2.getVida())-1);
             if(jogador2.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador2.setPosition(0.f,-400.f);
                 jogador2.setVida(5);
             }
@@ -436,6 +494,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-2);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -447,19 +506,17 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
         if(bala2[caux].GetCollider().CheckColisao(plat1,direction,1.f)){
             jogador2.OnColisao(direction);
             bala2.erase(bala2.begin() +caux);
+            jogador1.setScore(jogador1.GetScore()-1);
             jogador2.Move(-100.f,0.f);
             jogador2.setVida((jogador2.getVida())-2);
             if(jogador2.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador2.setPosition(0.f,-400.f);
                 jogador2.setVida(5);
             }
         }
     }
-
-
-
-
 
      for(Plataforma plataforma: invChao){
         Collider(plat1)=jogador1.GetCollider();
@@ -468,6 +525,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador1.setVida((jogador1.getVida())-6);
             if(jogador1.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador1.setPosition(0.f,-400.f);
                 jogador1.setVida(5);
             }
@@ -482,6 +540,7 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
             jogador2.setVida((jogador2.getVida())-6);
             if(jogador2.getVida()<0)
             {
+                jogador1.setScore(jogador1.GetScore()-1);
                 jogador2.setPosition(0.f,-400.f);
                 jogador2.setVida(5);
             }
@@ -527,8 +586,17 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
     for(ProjInimigo tiro : bala2)
         tiro.Desenha(window);
 
+        if (jogador1.GetScore()!=antigascore)
+    {
+        score2.str("");
+        score2 << jogador1.GetScore();
+        score = ("Score: ");
+        score += score2.str();
+        scoreT.setString(score);
+        antigascore=jogador1.GetScore();
+    }
 
-        if(jogador1.GetPosition().x>400.f){
+        if(jogador1.GetPosition().x>5100.f){
         jogador1.setPosition(0.f,0.f);
         jogador2.setPosition(0.f,0.f);
         _fimFase1=true;
@@ -536,10 +604,12 @@ void Fase1::Executar2(RenderWindow& window,float deltaTime,Jogador& jogador1,Vie
 
     vidas.setPosition(jogador1.GetPosition().x-240, jogador1.GetPosition().y-400);
     vidas2.setPosition(jogador1.GetPosition().x-140, jogador1.GetPosition().y-400);
+    scoreT.setPosition(jogador1.GetPosition().x+400, jogador1.GetPosition().y-400);
 
     window.setView(view);
     window.draw(vidas);
     window.draw(vidas2);
+    window.draw(scoreT);
 
 }
 

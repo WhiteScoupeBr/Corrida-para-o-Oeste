@@ -35,36 +35,36 @@ void BTK::setPosition(float dx,float dy){
 
 void BTK::Atualiza(float deltaTime){
 
-     counter++;
-    if(counter<4000){
-       corpo.move(0.f,.1f);
+      counter++;
+    if(counter<1000){
+       corpo.move(0.f,-0.1f);
     }
 
-    if(counter>4000){
-        corpo.move(0.f,-0.1f);
+    if(counter>1000){
+        corpo.move(0.f,0.1);
     }
 
-    if(counter >8000)
+    if(counter >2000)
         counter=0;
 
+    btkAtira=false;
+
+    if(counter%500==0)
+    {
+        btkAtira=true;
+    }
 }
 
-bool BTK::GetAtira(){
-
-    counter++;
-     btkAtira=false;
-     if(counter>1000){
-        btkAtira=true;
-        counter=0;
-     }
+bool BTK::GetAtira()const{
+    return btkAtira;
 }
 
 void BTK::setVida(int x){
      vida=x;
 }
-int BTK::getVida(){
+int BTK::getVida()const{
     return vida;
 }
-int BTK::getId(){
+int BTK::getId()const{
     return id;
 }

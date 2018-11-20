@@ -35,11 +35,12 @@ class Fase1
     protected:
 
     private:
-        Texture background,chao21,textureApache,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
+        Texture background,bandeira,chao21,textureApache,bar,jj,chao,bola,cacto,tnt,bala1,bala22;
         Font fonte;
         Text vidas;
         Font fonte2;
         Text vidas2;
+        Text scoreT;
         SoundBuffer buffer2;
         Sound gun;
         Vector2f direction;

@@ -13,6 +13,7 @@ Jogador::Jogador(Texture* texture, Vector2u contImg, float trocaTempo,float velo
     vida=5;
     atira=false;
     counter=0;
+    score=0;
 }
 
 Jogador::~Jogador()
@@ -104,7 +105,7 @@ Collider Jogador::GetCollider(){
     return Collider(corpo);
 }
 
-int Jogador::getVida(){
+int Jogador::getVida()const{
     return vida;
 }
 
@@ -119,9 +120,15 @@ void Jogador::Move(float dx,float dy){
 void Jogador::setPosition(float dx,float dy){
     corpo.setPosition(dx,dy);
 }
-bool Jogador::GetAtira(){
+bool Jogador::GetAtira()const{
     return atira;
 }
-bool Jogador::GetDireita(){
+bool Jogador::GetDireita()const{
     return direita;
+}
+void Jogador::setScore(int x){
+    score=x;
+}
+int Jogador::GetScore()const{
+    return score;
 }

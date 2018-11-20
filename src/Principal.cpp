@@ -41,9 +41,22 @@ void Principal::Executar()
     Fase2 fase2;
 
     Menu menu1(window.getSize().x, window.getSize().y);
+    Menu2 menu2(window.getSize().x, window.getSize().y);
 
     Pause pause (window.getSize().x, window.getSize().y);
 
+    Font font;
+    if (!font.loadFromFile("Carnevalee Freakshow.ttf"))
+    {
+        // handle error
+    }
+    Text text(nome,font,40);
+
+
+    //std::stringstream ss2;
+    //ss2 <<nome<<".txt" ;
+    //std::string texto = ss2.str();
+    //std::cout <<texto;
 
 
     float deltaTime=0.0f;
@@ -65,6 +78,32 @@ void Principal::Executar()
 
         while (window.pollEvent(event))
         {
+
+            if(_nome==true)
+            {
+                switch (event.type)
+                {
+                case sf::Event::TextEntered:
+                    if(event.text.unicode>=32&&event.text.unicode<=126)
+                        nome+= (char)event.text.unicode;
+                    else if(event.text.unicode==8&& nome.getSize()>0)
+                        nome.erase(nome.getSize()-1,nome.getSize());
+                    text.setString(nome);
+                case sf::Event::KeyPressed:
+                    switch (event.key.code)
+                    {
+                    case sf::Keyboard::LControl:
+                        desenhaMenu=true;
+                        _nome=false;
+                        break;
+                        break;
+                    }
+                    break;
+                }
+            }
+
+
+
             if(desenhaMenu==true)
             {
                 switch (event.type)
@@ -98,11 +137,14 @@ void Principal::Executar()
                             break;
                         case 2:
                         {
+                            nome1=nome;
+                            ss2 <<nome1<<".txt" ;
+                            std::string texto = ss2.str();
                             _game =true;
                             desenhaMenu=false;
                             _save=true;
                             string line;
-                            ifstream save("save.txt");
+                            ifstream save(texto.c_str());
                             if(save.is_open())
                             {
                                 while (getline(save,line))
@@ -112,6 +154,7 @@ void Principal::Executar()
                                     getline(ss,jog2,',');
                                     getline(ss,posx,',');
                                     getline(ss,posy,',');
+                                    getline(ss,scoreSave,',');
                                 }
                             }
                             else
@@ -119,7 +162,8 @@ void Principal::Executar()
                             istringstream(fase1t) >> fase1Pronta;
                             istringstream(jog2) >> jogoPronto2;
                             _posx = std::stof(posx);
-                            _posy = std::stof (posy);
+                            _posy = std::stof(posy);
+                            _score= std::stoi (scoreSave);
                         }
                         break;
                         case 3:
@@ -159,15 +203,12 @@ void Principal::Executar()
                             _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
-
-                            menu1.Altera2(window.getSize().x, window.getSize().y);
                             break;
                         case 1:
                             jogoPronto2=true;
                             _game =true;
                             desenhaMenu=false;
                             desenhaMenu2=false;
-                            menu1.Altera2(window.getSize().x, window.getSize().y);
                             break;
                         case 2:
                             window.close();
@@ -213,7 +254,10 @@ void Principal::Executar()
                             break;
                         case 1:
                         {
-                            ofstream myfile ("save.txt");
+                            nome1=nome;
+                            ss2 <<nome1<<".txt" ;
+                            std::string texto = ss2.str();
+                            ofstream myfile (texto.c_str());
                             if (myfile.is_open())
                             {
                                 myfile << fase1Pronta;
@@ -223,6 +267,8 @@ void Principal::Executar()
                                 myfile << jogador1.GetPosition().x;
                                 myfile << ",";
                                 myfile << jogador1.GetPosition().y;
+                                myfile << ",";
+                                myfile << jogador1.GetScore();
                                 myfile.close();
                                 printf("Saved!");
                             }
@@ -242,23 +288,52 @@ void Principal::Executar()
                 }
             }
 
+            if(_fimFase2==true)
+            {
+                switch (event.type)
+                {
+                case sf::Event::KeyReleased:
+                    switch (event.key.code)
+                    {
+                    case sf::Keyboard::Up:
+                        menu2.MoveUp();
+                        break;
+
+                    case sf::Keyboard::Down:
+                        menu2.MoveDown();
+                        break;
+
+                    case sf::Keyboard::Return:
+                        switch (menu2.GetPressedItem())
+                        {
+                        case 0:
+                            //ranking
+                            break;
+                        case 1:
+                            window.close();
+                            break;
+
+                        }
+                        break;
+                    }
+                }
+            }
+
         }
 
         if(_game)
         {
-
-            start = std::clock();
 
             if (_fimFase1)
             {
                 fase1Pronta=false;
             }
 
-
             if (jogoPronto2==false && fase1Pronta)
             {
                 if(_save)
                 {
+                    jogador1.setScore(_score);
                     jogador1.setPosition(_posx,_posy);
                     _save=false;
                 }
@@ -275,6 +350,7 @@ void Principal::Executar()
             {
                 if(_save)
                 {
+                    jogador1.setScore(_score);
                     jogador1.setPosition(_posx,_posy);
                     jogador2.setPosition(_posx,_posy);
                     _save=false;
@@ -295,6 +371,7 @@ void Principal::Executar()
             {
                 if(_save)
                 {
+                    jogador1.setScore(_score);
                     jogador1.setPosition(_posx,_posy);
                     _save=false;
                 }
@@ -310,6 +387,7 @@ void Principal::Executar()
             {
                 if(_save)
                 {
+                    jogador1.setScore(_score);
                     jogador1.setPosition(_posx,_posy);
                     jogador2.setPosition(_posx,_posy);
                     _save=false;
@@ -329,19 +407,14 @@ void Principal::Executar()
 
         if(_fimFase2)
         {
-            fim = clock();
-            tempoTotal=fim-start;
-            duration = tempoTotal / (double) CLOCKS_PER_SEC;
-
             _game=false;
-            desenhaMenu=true;
+            int scorefinal=jogador1.GetScore();
+            menu2.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
+            menu2.Desenha(window);
         }
+
         if (desenhaMenu==true)
         {
-            if (_fimFase2)
-            {
-                menu1.setPosition(jogador1.GetPosition().x, jogador1.GetPosition().y);
-            }
             menu1.Desenha(window);
         }
         if (desenhaMenu2==true)
@@ -354,6 +427,12 @@ void Principal::Executar()
             pause.setPosition(jogador1.GetPosition().x,jogador1.GetPosition().y);
             pause.Desenha(window);
         }
+        if(_nome)
+        {
+            text.setPosition(200.f,0.f);
+            window.draw(text);
+        }
+
 
         window.display();
         window.clear();

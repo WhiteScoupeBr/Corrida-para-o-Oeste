@@ -19,11 +19,13 @@ class Jogador
         Collider GetCollider();
         void OnColisao(Vector2f direction);
         void setPosition(float dx, float dy);
-        int getVida();
+        int getVida()const;
         void setVida(int x);
         void Move(float dx,float dy);
-        bool GetDireita();
-        bool GetAtira();
+        bool GetDireita()const;
+        bool GetAtira()const;
+        void setScore(int x);
+        int GetScore()const;
 
     protected:
 
@@ -39,6 +41,8 @@ class Jogador
         bool direita;
         bool atira;
         float counter;
+        int score;
+
 };
 
 #endif // JOGADOR_H

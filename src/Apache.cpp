@@ -54,16 +54,16 @@ void Apache::Atualiza(float deltaTime){
 
 }
 
-bool Apache::GetAtira(){
+bool Apache::GetAtira()const{
     return false;
 }
 
 void Apache::setVida(int x){
      vida=x;
 }
-int Apache::getVida(){
+int Apache::getVida()const{
     return vida;
 }
-int Apache::getId(){
+int Apache::getId()const{
     return id;
 }

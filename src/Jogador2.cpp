@@ -105,7 +105,7 @@ Collider Jogador2::GetCollider(){
     return Collider(corpo);
 }
 
-int Jogador2::getVida(){
+int Jogador2::getVida()const{
     return vida;
 }
 
@@ -120,9 +120,9 @@ void Jogador2::Move(float dx,float dy){
 void Jogador2::setPosition(float dx,float dy){
     corpo.setPosition(dx,dy);
 }
-bool Jogador2::GetAtira(){
+bool Jogador2::GetAtira()const{
     return atira;
 }
-bool Jogador2::GetDireita(){
+bool Jogador2::GetDireita()const{
     return direita;
 }

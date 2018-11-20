@@ -34,14 +34,14 @@ class Principal
     protected:
 
     private:
-    bool jogoPronto2 = false, desenhaMenu = true, desenhaMenu2 = false,fase1Pronta = false;
-    bool _pause=false,_save=false, _fase1=false,_jog2 =false,_game=false, _fimFase1=false, _fimFase2=false;
-    string fase1t,jog2,posx,posy;
+    bool jogoPronto2 = false, desenhaMenu = false, desenhaMenu2 = false,fase1Pronta = false;
+    bool _nome=true,_pause=false,_save=false, _fase1=false,_jog2 =false,_game=false, _fimFase1=false, _fimFase2=false;
+    string fase1t,jog2,posx,posy,nome1,texto,scoreSave;
+    std::stringstream ss2;
+    String nome;
     float _posx,_posy;
-    std::clock_t start,fim,tempoTotal;
-    double duration;
-
-
+    int _score;
+    Text nomeJog;
 
 
 };
