@@ -18,11 +18,16 @@ void Principal::Executar()
 
     RenderWindow window(sf::VideoMode(800, 600), "Corrida para o Oeste",Style::Close|Style::Titlebar);
 
-    Texture textureJogador1, textureJogador2;;
+    Texture textureJogador1, textureJogador2,inicio;
+    inicio.loadFromFile("Tela_Inicial.png");
     textureJogador1.loadFromFile("sprite2.png");
     textureJogador2.loadFromFile("sprite22.png");
     Jogador jogador1(&textureJogador1,Vector2u(8,12),0.1f,200.0f,128.f);
     Jogador2 jogador2(&textureJogador2,Vector2u(8,12),0.1f,200.0f,128.f);
+
+    Sprite inicial(inicio);
+    string ranking[10];
+    string ranking2[10];
 
     View view(Vector2f(0.0f,0.0f), Vector2f(800.f,600.f));
 
@@ -34,15 +39,13 @@ void Principal::Executar()
     textureSize2.x/=8;
     textureSize2.y/=12;
 
-    Music music,music2;
-    music.openFromFile("Cash.wav");
+    Music music2;
     music2.openFromFile("Good.wav");
 
     Fase1 fase1;
     Fase2 fase2;
 
     Menu menu1(window.getSize().x, window.getSize().y);
-    Menu2 menu2(window.getSize().x, window.getSize().y);
 
     Pause pause (window.getSize().x, window.getSize().y);
 
@@ -76,6 +79,7 @@ void Principal::Executar()
 
             if(_nome==true)
             {
+
                 switch (event.type)
                 {
                 case sf::Event::TextEntered:
@@ -159,10 +163,12 @@ void Principal::Executar()
                             _posx = std::stof(posx);
                             _posy = std::stof(posy);
                             _score= std::stoi (scoreSave);
+
                         }
                         break;
                         case 3:
-                            printf("RANKING");
+
+
                             break;
                         case 4:
                             window.close();
@@ -283,7 +289,7 @@ void Principal::Executar()
                 }
             }
 
-             if(desenhaFinal==true)
+            if(desenhaFinal==true)
             {
                 switch (event.type)
                 {
@@ -291,15 +297,15 @@ void Principal::Executar()
                     switch (event.key.code)
                     {
                     case sf::Keyboard::Up:
-                        pause.MoveUp();
+                        menu1.MoveUp();
                         break;
 
                     case sf::Keyboard::Down:
-                        pause.MoveDown();
+                        menu1.MoveDown();
                         break;
 
                     case sf::Keyboard::Return:
-                        switch (pause.GetPressedItem())
+                        switch (menu1.GetPressedItem())
                         {
                         case 0:
                             //rank
@@ -410,26 +416,31 @@ void Principal::Executar()
             novo.nome=nome1;
             novo.score=finalScore;
             int i, j;
-            for(i=0;i<10;i++){
+            for(i=0; i<10; i++)
+            {
                 scoreFinal[i].nome=" ";
                 scoreFinal[i].score=0;
             }
-            ifstream rank1;
-            rank1=("rank.txt");
+
+            ss2 <<"rank"<<".txt" ;
+            std::string texto = ss2.str();
+            ifstream myfile1 (texto.c_str());
             string line;
-             if("rank.txt")
+            string scoreTxt;
+            int rankaux=0;
+            if(myfile1.is_open())
+            {
+                while (getline(myfile1,line))
                 {
-                    while (getline(rank1,line))
-                    {
-                        for(int rankaux=0;rankaux<10;rankaux++){
-                            stringstream ss(line);
-                            getline(ss,scoreFinal[i].nome,',');
-                            getline(ss,scoreFinal[i].score,',');
-                        }
-                    }
+                    stringstream ss(line);
+                    getline(ss,scoreFinal[rankaux].nome,',');
+                    getline(ss,scoreTxt,',');
+                    scoreFinal[rankaux].score= std::stoi (scoreSave);
+                    rankaux++;
                 }
-                else
-                    printf("Error opening save!");
+            }
+            else
+                printf("Error getting rank!");
 
             for (i = 0; i < 10-1; i++)
             {
@@ -457,27 +468,29 @@ void Principal::Executar()
                 }
             }
 
-                            ofstream myfile ("rank.txt");
-                            if (myfile.is_open())
-                            {
-                                for(int rankaux=0;rankaux<10;rankaux++){
-                                myfile << scoreFinal[rankaux].nome;
-                                myfile << ",";
-                                myfile << scoreFinal[rankaux].score;
-                                myfile << ",";
-                                }
-                                myfile.close();
-                                printf("Saved!");
-                            }
+            ofstream myfile ("rank.txt");
+            if (myfile.is_open())
+            {
+                for(int rankaux=0; rankaux<10; rankaux++)
+                {
+                    myfile << scoreFinal[rankaux].nome;
+                    myfile << ",";
+                    myfile << scoreFinal[rankaux].score;
+                    myfile << ",";
+                }
+                myfile.close();
+                printf("Saved!");
+            }
 
-                            else
-                                printf("Unable to save!");
+            else
+                printf("Unable to save!");
 
             desenhaFinal=true;
             _fimFase2=false;
         }
 
-        if(desenhaFinal){
+        if(desenhaFinal)
+        {
             menu1.Altera2(jogador1.GetPosition().x,jogador1.GetPosition().y);
             menu1.Desenha(window);
         }
@@ -498,7 +511,8 @@ void Principal::Executar()
         }
         if(_nome)
         {
-            text.setPosition(200.f,0.f);
+            window.draw(inicial);
+            text.setPosition(300.f,210.f);
             window.draw(text);
         }
 

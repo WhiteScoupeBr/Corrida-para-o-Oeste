@@ -1,8 +1,8 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
-#include "Entidade.h"
+#include "Personagem.h"
 
-class Inimigo:public Entidade
+class Inimigo:public Personagem
 {
     public:
         Inimigo();

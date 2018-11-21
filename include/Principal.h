@@ -7,11 +7,7 @@
 #include "Fase1.h"
 #include "Fase2.h"
 #include "Menu.h"
-#include "Menu2.h"
 #include "Pause.h"
-#include"Jogador2.h"
-#include"jogador.h"
-//#include "MenuFinal.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -40,7 +36,7 @@ class Principal
     protected:
 
     private:
-    bool jogoPronto2 = false, desenhaMenu = false, desenhaMenu2 = false,fase1Pronta = false,desenhaFinal=false;
+    bool jogoPronto2 = false, desenhaMenu = false, desenhaMenu2 = false,fase1Pronta = false,desenhaFinal=false,desenhaRanking=false;
     bool _nome=true,_pause=false,_save=false, _fase1=false,_jog2 =false,_game=false, _fimFase1=false, _fimFase2=false;
     string fase1t,jog2,posx,posy,nome1,texto,scoreSave;
     std::stringstream ss2;
